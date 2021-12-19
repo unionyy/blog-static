@@ -1,0 +1,1084 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[SWEA] 12526. 자동완성 (C++, 라이브러리 X) - 유년시절</title>
+<meta name="description" content="B형 실전 문제  풀이  Trie를 만들고 카운트(cnt), 밴 여부(ban), 추천 노드(best) 를 저장.  input을 할 때마다 카운트를 1씩 더하고, 부모 노드를 순회하면서 best와 비교 및 교체.  ban을 하면 ban을 true로 해서 추천되지 않도록 하고, 부모 노드를 순회하면서 해당 노드를 best로 갖고 있으면 best를 다시 찾아줌.  recommend를 하면 해당 노드로 찾아가 best를 리턴, best가 ban이거나 cnt가 0일경우 input값을 리턴.  실수  MAX_NODE 값을 넉넉히 줄것. (최대값을 정확히 계산하면 좋겠지만 넉넉히 주는 것이 맘편함!)  ban한 값을 추천하지 않는 로직을 빼먹음 (끝까지 집중해서 코딩할 것)">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="[SWEA] 12526. 자동완성 (C++, 라이브러리 X)">
+<meta property="og:url" content="http://localhost:4000/swea/12526/">
+
+
+  <meta property="og:description" content="B형 실전 문제  풀이  Trie를 만들고 카운트(cnt), 밴 여부(ban), 추천 노드(best) 를 저장.  input을 할 때마다 카운트를 1씩 더하고, 부모 노드를 순회하면서 best와 비교 및 교체.  ban을 하면 ban을 true로 해서 추천되지 않도록 하고, 부모 노드를 순회하면서 해당 노드를 best로 갖고 있으면 best를 다시 찾아줌.  recommend를 하면 해당 노드로 찾아가 best를 리턴, best가 ban이거나 cnt가 0일경우 input값을 리턴.  실수  MAX_NODE 값을 넉넉히 줄것. (최대값을 정확히 계산하면 좋겠지만 넉넉히 주는 것이 맘편함!)  ban한 값을 추천하지 않는 로직을 빼먹음 (끝까지 집중해서 코딩할 것)">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-08-19T05:07:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/swea/12526/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[SWEA] 12526. 자동완성 (C++, 라이브러리 X)">
+    <meta itemprop="description" content="B형 실전 문제풀이Trie를 만들고 카운트(cnt), 밴 여부(ban), 추천 노드(best) 를 저장.input을 할 때마다 카운트를 1씩 더하고, 부모 노드를 순회하면서 best와 비교 및 교체.ban을 하면 ban을 true로 해서 추천되지 않도록 하고, 부모 노드를 순회하면서 해당 노드를 best로 갖고 있으면 best를 다시 찾아줌.recommend를 하면 해당 노드로 찾아가 best를 리턴, best가 ban이거나 cnt가 0일경우 input값을 리턴.실수MAX_NODE 값을 넉넉히 줄것. (최대값을 정확히 계산하면 좋겠지만 넉넉히 주는 것이 맘편함!)ban한 값을 추천하지 않는 로직을 빼먹음 (끝까지 집중해서 코딩할 것)">
+    <meta itemprop="datePublished" content="2021-08-19T05:07:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[SWEA] 12526. 자동완성 (C++, 라이브러리 X)
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-08-19T05:07:30+00:00">August 19, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+    
+        
+            
+                
+
+<div>
+    <h3><a href="/categories#algorithm">Algorithm</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/9468/" rel="permalink">👉 [SWEA] 9468. 친구 추천 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-20</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/9467/" rel="permalink">👉 [SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-20</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/swea/12526/" rel="permalink">👈 [SWEA] 12526. 자동완성 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-19</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/7091/" rel="permalink">👉 [SWEA] 7091. 은기의 아주 큰 그림 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-11</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/4038/" rel="permalink">👉 [SWEA] 4038. 단어가 등장하는 횟수 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-10</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>B형 실전 문제</p>
+
+<h2 id="풀이">풀이</h2>
+
+<p>Trie를 만들고 카운트(cnt), 밴 여부(ban), 추천 노드(best) 를 저장.</p>
+
+<p>input을 할 때마다 카운트를 1씩 더하고, 부모 노드를 순회하면서 best와 비교 및 교체.</p>
+
+<p>ban을 하면 ban을 true로 해서 추천되지 않도록 하고, 부모 노드를 순회하면서 해당 노드를 best로 갖고 있으면 best를 다시 찾아줌.</p>
+
+<p>recommend를 하면 해당 노드로 찾아가 best를 리턴, best가 ban이거나 cnt가 0일경우 input값을 리턴.</p>
+
+<h2 id="실수">실수</h2>
+
+<p>MAX_NODE 값을 넉넉히 줄것. (최대값을 정확히 계산하면 좋겠지만 넉넉히 주는 것이 맘편함!)</p>
+
+<p>ban한 값을 추천하지 않는 로직을 빼먹음 (끝까지 집중해서 코딩할 것)</p>
+
+<!--more-->
+
+<h2 id="코드-github">코드 <a href="https://github.com/unionyy/samsung-algorithm-21/blob/main/practice/autocomplete/solution.cpp" target="_blank">GitHub</a></h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define MAX_NODE 200000
+</span>
+<span class="kt">void</span> <span class="nf">mstrcpy</span><span class="p">(</span><span class="kt">char</span> <span class="n">dst</span><span class="p">[],</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">src</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">((</span><span class="n">dst</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="o">++</span><span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">mstrlen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">ret</span><span class="p">])</span>
+		<span class="o">++</span><span class="n">ret</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">mstrcmp</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">str1</span><span class="p">[],</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">str2</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">str1</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">str1</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">str2</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+		<span class="o">++</span><span class="n">c</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">str1</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">-</span> <span class="n">str2</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="nc">TrieNode</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">time</span><span class="p">;</span>
+    <span class="n">TrieNode</span> <span class="o">*</span><span class="n">best</span><span class="p">,</span> <span class="o">*</span><span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">[</span><span class="mi">26</span><span class="p">];</span>
+    <span class="kt">bool</span> <span class="n">ban</span><span class="p">;</span>
+
+    <span class="n">TrieNode</span><span class="o">*</span> <span class="n">Alloc</span><span class="p">(</span><span class="n">TrieNode</span> <span class="o">*</span><span class="n">_parent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">_parent</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+        <span class="n">ban</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">init</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">_str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">_time</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">_ban</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ban</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="n">mstrcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">_str</span><span class="p">);</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">_time</span><span class="p">;</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">ban</span> <span class="o">=</span> <span class="n">_ban</span><span class="p">;</span>
+
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">_time</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">_time</span><span class="p">;</span>
+        <span class="n">cnt</span> <span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">Ban</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">ban</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="n">nodes</span><span class="p">[</span><span class="n">MAX_NODE</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">nodeCnt</span><span class="p">;</span>
+<span class="n">TrieNode</span><span class="o">*</span> <span class="n">head</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">wordCnt</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">nodecmp</span><span class="p">(</span><span class="n">TrieNode</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">TrieNode</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">ban</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">ban</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">cnt</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">time</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">time</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">init</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">nodeCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">wordCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">head</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">nodeCnt</span><span class="o">++</span><span class="p">].</span><span class="n">Alloc</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">inputWord</span><span class="p">(</span><span class="kt">char</span> <span class="n">mWord</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+<span class="p">{</span>
+    <span class="n">TrieNode</span><span class="o">*</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="n">mWord</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="o">++</span> <span class="o">-</span> <span class="sc">'a'</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">])</span> 
+            <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">nodeCnt</span><span class="o">++</span><span class="p">].</span><span class="n">Alloc</span><span class="p">(</span><span class="n">pivot</span><span class="p">);</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pivot</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="p">)</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">wordCnt</span><span class="o">++</span><span class="p">);</span>
+    <span class="k">else</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">(</span><span class="n">mWord</span><span class="p">,</span> <span class="n">wordCnt</span><span class="o">++</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
+    <span class="n">TrieNode</span><span class="o">*</span> <span class="n">pivot2</span> <span class="o">=</span> <span class="n">pivot</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pivot2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">nodecmp</span><span class="p">(</span><span class="n">pivot</span><span class="p">,</span> <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">best</span><span class="p">))</span> <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">best</span> <span class="o">=</span> <span class="n">pivot</span><span class="p">;</span>
+        <span class="n">pivot2</span> <span class="o">=</span> <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">recommend</span><span class="p">(</span><span class="kt">char</span> <span class="n">mUser</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="kt">char</span> <span class="n">mAnswer</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+<span class="p">{</span>
+    <span class="n">TrieNode</span> <span class="o">*</span><span class="n">pivot</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">mUser</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="o">++</span> <span class="o">-</span> <span class="sc">'a'</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">mstrcpy</span><span class="p">(</span><span class="n">mAnswer</span><span class="p">,</span> <span class="n">mUser</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">mstrlen</span><span class="p">(</span><span class="n">mUser</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">best</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pivot</span><span class="o">-&gt;</span><span class="n">cnt</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">ban</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">mstrcpy</span><span class="p">(</span><span class="n">mAnswer</span><span class="p">,</span> <span class="n">mUser</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">mstrlen</span><span class="p">(</span><span class="n">mUser</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">mstrcpy</span><span class="p">(</span><span class="n">mAnswer</span><span class="p">,</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="n">mstrlen</span><span class="p">(</span><span class="n">mAnswer</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">banWord</span><span class="p">(</span><span class="kt">char</span> <span class="n">mWord</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+<span class="p">{</span>
+    <span class="n">TrieNode</span> <span class="o">*</span><span class="n">pivot</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">mWord</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="o">++</span> <span class="o">-</span> <span class="sc">'a'</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">])</span>
+            <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">nodeCnt</span><span class="o">++</span><span class="p">].</span><span class="n">Alloc</span><span class="p">(</span><span class="n">pivot</span><span class="p">);</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">pivot</span><span class="o">-&gt;</span><span class="n">Ban</span><span class="p">();</span>
+
+    <span class="n">TrieNode</span> <span class="o">*</span><span class="n">pivot2</span> <span class="o">=</span> <span class="n">pivot</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pivot2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">best</span> <span class="o">==</span> <span class="n">pivot</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">nodecmp</span><span class="p">(</span><span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">best</span><span class="p">,</span> <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">best</span><span class="p">))</span>
+                        <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">best</span> <span class="o">=</span> <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">best</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">pivot2</span> <span class="o">=</span> <span class="n">pivot2</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+    
+        
+            
+                
+
+<div>
+    <h3><a href="/categories#algorithm">Algorithm</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/9468/" rel="permalink">👉 [SWEA] 9468. 친구 추천 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-20</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/9467/" rel="permalink">👉 [SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-20</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/swea/12526/" rel="permalink">👈 [SWEA] 12526. 자동완성 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-19</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/7091/" rel="permalink">👉 [SWEA] 7091. 은기의 아주 큰 그림 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-11</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/swea/4038/" rel="permalink">👉 [SWEA] 4038. 단어가 등장하는 횟수 (C++, 라이브러리 X)
+ <span class="date__text">2021-08-10</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#swea" class="page__taxonomy-item" rel="tag">SWEA</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#trie" class="page__taxonomy-item" rel="tag">Trie</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-08-19T05:07:30+00:00">August 19, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/swea/7091/" class="pagination--pager" title="[SWEA] 7091. 은기의 아주 큰 그림 (C++, 라이브러리 X)
+">이전</a>
+    
+    
+      <a href="/swea/9467/" class="pagination--pager" title="[SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

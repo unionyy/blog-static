@@ -1,0 +1,1069 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Jekyll, GitHub Page] URL 변경 및 리다이렉트하기 - 유년시절</title>
+<meta name="description" content="제 블로그는 Jekyll과 GitHub Page 로 구현되어 있습니다. Jekyll의 기본설정에 따라, 포스트의 url이 /카테고리/타이틀로 설정 되어있었습니다. 이게 맘에 들지않아 url을 제 임의로 수정하고 기존의 url이 404 not found를 띄우지 않도록 Redirect했습니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="[Jekyll, GitHub Page] URL 변경 및 리다이렉트하기">
+<meta property="og:url" content="http://localhost:4000/blog/redirect/">
+
+
+  <meta property="og:description" content="제 블로그는 Jekyll과 GitHub Page 로 구현되어 있습니다. Jekyll의 기본설정에 따라, 포스트의 url이 /카테고리/타이틀로 설정 되어있었습니다. 이게 맘에 들지않아 url을 제 임의로 수정하고 기존의 url이 404 not found를 띄우지 않도록 Redirect했습니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-01T09:40:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/redirect/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Jekyll, GitHub Page] URL 변경 및 리다이렉트하기">
+    <meta itemprop="description" content="제 블로그는 Jekyll과 GitHub Page 로 구현되어 있습니다. Jekyll의 기본설정에 따라, 포스트의 url이 /카테고리/타이틀로 설정 되어있었습니다. 이게 맘에 들지않아 url을 제 임의로 수정하고 기존의 url이 404 not found를 띄우지 않도록 Redirect했습니다.">
+    <meta itemprop="datePublished" content="2021-02-01T09:40:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[Jekyll, GitHub Page] URL 변경 및 리다이렉트하기
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-02-01T09:40:30+00:00">February 1, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#blog">Blog</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/blog/category-date/" rel="permalink">👉 [Jekyll, GitHub Page] ‘이 카테고리의 다른 글’에 날짜 추가
+ <span class="date__text">2021-09-28</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/blog/category/" rel="permalink">👉 [Jekyll, GitHub Page] ‘이 카테고리의 다른 글’ 만들기
+ <span class="date__text">2021-09-28</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/blog/redirect/" rel="permalink">👈 [Jekyll, GitHub Page] URL 변경 및 리다이렉트하기
+ <span class="date__text">2021-02-01</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>제 <a href="https://blog.uniony.me/" target="_blank">블로그</a>는 Jekyll과 GitHub Page 로 구현되어 있습니다. Jekyll의 기본설정에 따라, 포스트의 url이 <code class="language-plaintext highlighter-rouge">/카테고리/타이틀</code>로 설정 되어있었습니다. 이게 맘에 들지않아 url을 제 임의로 수정하고 기존의 url이 404 not found를 띄우지 않도록 Redirect했습니다.</p>
+
+<!--more-->
+
+<h2 id="jekyll-포스트-url-변경하기">Jekyll 포스트 url 변경하기</h2>
+<p>Jekyll 페이지의 url을 변경하는 방법은 간단합니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>permalink: /my/url/
+</code></pre></div></div>
+<p>원하는 포스트에 <code class="language-plaintext highlighter-rouge">permalink</code> 변수를 추가해주시면 됩니다.</p>
+
+<p>또는, 글로벌 변수를 수정하여 모든 포스트의 url의 형식을 한번에 바꾸는 방법도 있습니다. <code class="language-plaintext highlighter-rouge">_config.yml</code> 파일에</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>permalink: /:categories/:title/
+</code></pre></div></div>
+<p>이런 식으로 permalink 변수들을 사용하여 링크를 만들 수 있습니다. 사용할 수 있는 변수들은 지킬 공식 문서에 모두 나와있습니다. (<a href="https://jekyllrb.com/docs/permalinks/" target="_blank">Permalinks</a>)</p>
+
+<p>저는 개별 포스트마다 제가 원하는 링크를 설정해주었습니다.</p>
+
+<p><img src="/assets/post-images/redirect/permalink.png" alt="permalink" /></p>
+
+<h2 id="기존-링크-redirect">기존 링크 Redirect</h2>
+<p>포스트 url을 바꿔버렸으니, 기존의 url로 접속시 404 Not Found 에러가 발생합니다.</p>
+
+<p><img src="/assets/post-images/redirect/404.png" alt="404error" style="width:100%; border: 1px solid #24292e; margin-bottom: 10px;" /></p>
+
+<p>이 블로그는 Google Search Console에 등록되어 있습니다. 아직 유입은 없지만 구글에 등록된 링크를 탔을 때에 404 Not Found 에러를 띄우고 싶지는 않았습니다. 그래서 기존의 링크를 새로운 링크로 Redirect하기로 했습니다.</p>
+
+<h3 id="301-redirect">301 Redirect</h3>
+<p>Redirect를 하는 가장 좋은 방법은 서버에서 301 redirect 응답을 해 주는 것입니다. 그러나 이 블로그는 정적 페이지 호스팅(Static Page Hosting)인 GitHub Page를 이용하고 있기 때문에 서버단에서의 301 리다이렉트 응답을 보낼 수 없습니다.</p>
+
+<h3 id="plugin-사용"><a href="https://github.com/jekyll/jekyll-redirect-from" target="_blank">Plugin 사용</a></h3>
+<p>이 플러그인을 사용하면 리다이렉트 링크를 생성해준다고 합니다. 그러나 저는 리다이렉트해야할 링크가 몇개 없었기 때문에 굳이 플러그인을 사용하지 않았습니다.</p>
+
+<h3 id="redirected-layout-사용하기">Redirected Layout 사용하기</h3>
+<p>제가 사용한 방법입니다. <a href="https://superdevresources.com/redirects-jekyll-github-pages/" target="_blank">이곳</a>을 참고했습니다.</p>
+
+<p>먼저 redirected.html을 만들어서 _layout 폴더에 넣어줍니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"content-type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"0;url="</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Redirecting...<span class="nt">&lt;/h1&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>Click here if you are not redirected.<span class="nt">&lt;a&gt;</span>
+      <span class="nt">&lt;script&gt;</span><span class="nx">location</span><span class="o">=</span><span class="dl">''</span><span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>이 레이아웃은 <code class="language-plaintext highlighter-rouge">canonical</code> 태그를 최신 링크로 바꿔주고 <code class="language-plaintext highlighter-rouge">refresh</code> 메타 태그를 이용해 새로운 페이지로 redirect 시켜줍니다.</p>
+
+<p>그리고 최상위 폴더에 <code class="language-plaintext highlighter-rouge">redirect</code>라는 폴더를 만든 뒤에 리다이렉트 링크를 하나씩 만들어줬습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: redirected
+sitemap: false
+permalink: /coding/visual%20studio%20code/vscode-markdown/
+redirect_to:  /vscode/markdown/
+---
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">permalink</code>에 예전 링크를 넣고 <code class="language-plaintext highlighter-rouge">redirect_to</code>에 새로운 링크를 넣어줍니다. 그리고 블로그의 <code class="language-plaintext highlighter-rouge">sitemap.xml</code>에 예전 링크가 들어가지 않도록 <code class="language-plaintext highlighter-rouge">sitemap</code>은 <code class="language-plaintext highlighter-rouge">false</code>로 설정해줍니다.</p>
+
+<p>리다이렉트가 필요한 링크마다 리다이렉트 링크를 만들어 주었습니다.</p>
+
+<p><img src="/assets/post-images/redirect/redirect-mds.png" alt="redirect.md" /></p>
+
+<h2 id="결과">결과</h2>
+<p>이제 구글서치콘솔에 등록되어있는 포스트 링크로 접속했을 때에 새로운 페이지로 리다이렉트될 것입니다. 또한 시간이 지나면, 구글크롤링봇이 해당 페이지가 리다이렉트된 것을 파악하고 기존 링크로 만들어진 색인을 새로운 링크로 옮길 것입니다.</p>
+
+<p>사실 refresh 메타 태그는 별로 추천되지 않는 방법이라고 합니다. 유저가 원하지 않는 링크로 이동시키고, 시간이 오래걸리기 때문이죠. 그러나 301 Redirect가 불가능할 때에는 최선의 방법이라고 생각되어 이 방법을 사용했습니다. 더 나은 방법을 찾으면 알려드리도록 하겠습니다.</p>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://jekyllrb.com/docs/permalinks/" target="_blank">Permalinks</a></li>
+  <li><a href="https://superdevresources.com/redirects-jekyll-github-pages/" target="_blank">How to redirect URLs on Jekyll site hosted on GitHub Pages</a></li>
+  <li><a href="https://stackoverflow.com/questions/10178304/what-is-the-best-approach-for-redirection-of-old-pages-in-jekyll-and-github-page" target="_blank">What is the best approach for redirection of old pages in Jekyll and GitHub Pages?</a></li>
+  <li><a href="https://www.weboptimizers.com.au/google-warning-meta-refresh/" target="_blank">Google Warning: Using The Meta Refresh Tag Is Bad Practice</a></li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#blog">Blog</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/blog/category-date/" rel="permalink">👉 [Jekyll, GitHub Page] ‘이 카테고리의 다른 글’에 날짜 추가
+ <span class="date__text">2021-09-28</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/blog/category/" rel="permalink">👉 [Jekyll, GitHub Page] ‘이 카테고리의 다른 글’ 만들기
+ <span class="date__text">2021-09-28</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/blog/redirect/" rel="permalink">👈 [Jekyll, GitHub Page] URL 변경 및 리다이렉트하기
+ <span class="date__text">2021-02-01</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#github-page" class="page__taxonomy-item" rel="tag">GitHub Page</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#jekyll" class="page__taxonomy-item" rel="tag">Jekyll</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#permalink" class="page__taxonomy-item" rel="tag">Permalink</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#redirect" class="page__taxonomy-item" rel="tag">Redirect</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#blog" class="page__taxonomy-item" rel="tag">Blog</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-02-01T09:40:30+00:00">February 1, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/lol/lolog-me/" class="pagination--pager" title="LoLog.me - 롤 전적검색 사이트
+">이전</a>
+    
+    
+      <a href="/lol/production-key/" class="pagination--pager" title="Riot API - Production API Key 발급받기(Register Product)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

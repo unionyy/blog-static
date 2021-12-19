@@ -1,0 +1,1221 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Riot API - Production API Key 발급받기(Register Product) - 유년시절</title>
+<meta name="description" content="Riot API로 공개서비스를 제공하기 위해서는 제품을 등록하고, Production API Key를 발급받아야 합니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="Riot API - Production API Key 발급받기(Register Product)">
+<meta property="og:url" content="http://localhost:4000/lol/production-key/">
+
+
+  <meta property="og:description" content="Riot API로 공개서비스를 제공하기 위해서는 제품을 등록하고, Production API Key를 발급받아야 합니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-07T11:40:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/lol/production-key/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Riot API - Production API Key 발급받기(Register Product)">
+    <meta itemprop="description" content="Riot API로 공개서비스를 제공하기 위해서는 제품을 등록하고, Production API Key를 발급받아야 합니다.">
+    <meta itemprop="datePublished" content="2021-02-07T11:40:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Riot API - Production API Key 발급받기(Register Product)
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-02-07T11:40:30+00:00">February 7, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#lol">LoL</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/riot-matchhistoryuri/" rel="permalink">👉 Riot API Match-V4, matchHistoryUri가 뭘까?
+ <span class="date__text">2021-02-27</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/production-key-approved/" rel="permalink">👉 Riot API - Production API Key 승인!
+ <span class="date__text">2021-02-11</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/lol/production-key/" rel="permalink">👈 Riot API - Production API Key 발급받기(Register Product)
+ <span class="date__text">2021-02-07</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/lolog-me/" rel="permalink">👉 LoLog.me - 롤 전적검색 사이트
+ <span class="date__text">2021-02-01</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/riot-api/" rel="permalink">👉 Riot API 사용법 - 계정 생성 &amp; 소환사 정보 가져오기
+ <span class="date__text">2021-01-31</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>Riot API로 공개서비스를 제공하기 위해서는 제품을 등록하고, Production API Key를 발급받아야 합니다. 
+<!--more--></p>
+
+<p>이전 포스트, <a href="/lol/lolog-me/" target="_blank">LoLog.me - 롤 전적검색 사이트</a>에서 계획한 대로 <a href="https://lolog.me/" target="_blank">LoLog.me</a> 웹서버를 Riot API를 사용하는 방식으로 변경하였습니다. YOUR.GG를 크롤링하던 코드를 모두 제거하고 Riot API 모듈을 만들어 적용시켰습니다.</p>
+
+<p>현재는 이것저것 생각했던 기능을 추가해보고 있는 중입니다. 아직 웹서비스를 정식으로 출시할 단계는 아니지만, 제품이 승인되고 Production Key가 승인되기 까지 2주정도 시간이 걸린다고 하여 미리 신청해 두었습니다. (반려된다면 다시 신청해야겠죠 ㅠ)</p>
+
+<h2 id="계정생성-및-테스트">계정생성 및 테스트</h2>
+<p><a href="/lol/riot-api/" target="_blank">Riot API 사용법 - 계정 생성 &amp; 소환사 정보 가져오기</a> 이전 포스팅에 자세히 설명해두었습니다.</p>
+
+<h2 id="제품-등록---product-type-선택하기">제품 등록 - PRODUCT TYPE 선택하기</h2>
+<p><a href="https://developer.riotgames.com/" target="_blank">라이엇 개발자 페이지</a>에 로그인하고 대쉬보드에서 <code class="language-plaintext highlighter-rouge">REGISTER PRODUCT</code> 버튼을 클릭합니다.</p>
+
+<p>PRODUCT TYPE 선택화면에서 원하는 타입을 선택합니다.
+<img src="/assets/post-images/riotapi-register/producttype.png" alt="product type" /></p>
+
+<ul>
+  <li>PRODUCTION API KEY</li>
+</ul>
+
+<p>공개 서비스를 제공할 때 필요한 API KEY입니다. Riot API를 이용한 어플리케이션이나 웹사이트를 제공하려할 때 선택합니다. 기본적으로 Rate Limit이 크게 설정되어 있고, 사용량이 많아지면 할당량 추가 신청을 할 수 있습니다. 제품 승인을 받고 API Key를 제공받기 위해서는 제품의 프로토타입과 웹사이트가 존재해야합니다.</p>
+
+<ul>
+  <li>PERSONAL API KEY</li>
+</ul>
+
+<p>개발자 혼자 사용하거나 소규모 비공개 그룹을 위한 제품에 사용할 수 있는 API Key입니다. Rate Limit이 PRODUCTION API KEY에 비해 작게 설정되어 있고, 추가 할당량을 획들할 수 없습니다.</p>
+
+<h2 id="제품-등록---신청서-작성--웹사이트-인증">제품 등록 - 신청서 작성 &amp; 웹사이트 인증</h2>
+
+<p>원하는 PRODUCT TYPE을 선택하면 약관 동의 창이 뜹니다. 약관을 확인 후 동의하게 되면 신청서 작성 페이지가 열립니다. 저의 경우 웹사이트를 공개할 계획이기 때문에 PRODUCTION API KEY를 선택했습니다.</p>
+
+<p>제품명, 제품 설명, 웹사이트 주소 등을 입력하고 제출하면 됩니다.</p>
+
+<p>PRODUCTION API KEY를 선택한 경우, 접근 가능하고 본인이 관리할 수 있는 웹사이트를 제출해야 합니다. 제출 이후, 주어지는 코드를 <code class="language-plaintext highlighter-rouge">/웹사이트.주소/riot.txt</code> 경로에 올려 웹사이트를 인증하게 됩니다.</p>
+
+<h2 id="기다림">기다림…</h2>
+
+<p>신청서를 제출하고 웹사이트 승인을 끝마치면 이제 기다리는 일만 남았습니다. 유저 정보의 <code class="language-plaintext highlighter-rouge">GROUPS</code> 페이지에 들어가면, 신청한 앱의 간단한 정보를 확인할 수 있습니다. (자세한 정보는 <code class="language-plaintext highlighter-rouge">APPS</code> 페이지에 들어가면 확인할 수 있습니다.)</p>
+
+<p><img src="/assets/post-images/riotapi-register/pending.png" alt="pending" /></p>
+
+<p>저는 아직 승인이 되지 않아 Pending 상태이고, API KEY가 발급되지 않았습니다.</p>
+
+<p>2주정도 기다리면 Riot에서 제 신청서와 제품을 확인한 뒤에 승인여부를 결정하고 알려준다고 합니다.</p>
+
+<hr />
+
+<h2 id="신청결과">신청결과</h2>
+<p>3-4일 뒤에 결과가 나왔고, 승인되었습니다 ㅎㅎ</p>
+
+<p>관련 내용은 새로운 포스트로 올려두었습니다.</p>
+
+<ul>
+  <li><a href="/lol/production-key-approved/" target="_blank">Riot API - Production API Key 승인!</a></li>
+</ul>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://developer.riotgames.com/" target="_blank">DEVELOPER-RIOTGAMES</a></li>
+  <li><a href="/lol/lolog-me/" target="_blank">LoLog.me - 롤 전적검색 사이트</a></li>
+  <li><a href="/lol/riot-api/" target="_blank">Riot API 사용법 - 계정 생성 &amp; 소환사 정보 가져오기</a></li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#lol">LoL</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/riot-matchhistoryuri/" rel="permalink">👉 Riot API Match-V4, matchHistoryUri가 뭘까?
+ <span class="date__text">2021-02-27</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/production-key-approved/" rel="permalink">👉 Riot API - Production API Key 승인!
+ <span class="date__text">2021-02-11</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/lol/production-key/" rel="permalink">👈 Riot API - Production API Key 발급받기(Register Product)
+ <span class="date__text">2021-02-07</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/lolog-me/" rel="permalink">👉 LoLog.me - 롤 전적검색 사이트
+ <span class="date__text">2021-02-01</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/lol/riot-api/" rel="permalink">👉 Riot API 사용법 - 계정 생성 &amp; 소환사 정보 가져오기
+ <span class="date__text">2021-01-31</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#league-of-legend" class="page__taxonomy-item" rel="tag">League of Legend</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#lolog-me" class="page__taxonomy-item" rel="tag">LoLog.me</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#riot-api" class="page__taxonomy-item" rel="tag">Riot API</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#lol" class="page__taxonomy-item" rel="tag">LoL</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-02-07T11:40:30+00:00">February 7, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/redirect/" class="pagination--pager" title="[Jekyll, GitHub Page] URL 변경 및 리다이렉트하기
+">이전</a>
+    
+    
+      <a href="/lol/production-key-approved/" class="pagination--pager" title="Riot API - Production API Key 승인!
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

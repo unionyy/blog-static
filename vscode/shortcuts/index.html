@@ -1,0 +1,1076 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Visual Studio Code 자주 사용하는 단축키 모음 - 유년시절</title>
+<meta name="description" content="VS Code 에서 제가 많이 사용하는 단축키들입니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="Visual Studio Code 자주 사용하는 단축키 모음">
+<meta property="og:url" content="http://localhost:4000/vscode/shortcuts/">
+
+
+  <meta property="og:description" content="VS Code 에서 제가 많이 사용하는 단축키들입니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-03-02T02:07:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/vscode/shortcuts/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Visual Studio Code 자주 사용하는 단축키 모음">
+    <meta itemprop="description" content="VS Code 에서 제가 많이 사용하는 단축키들입니다.">
+    <meta itemprop="datePublished" content="2021-03-02T02:07:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Visual Studio Code 자주 사용하는 단축키 모음
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-03-02T02:07:30+00:00">March 2, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+
+<div>
+    <h3><a href="/categories#visual-studio-code">Visual Studio Code</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/vscode/gcc/" rel="permalink">👉 Visual Studio Code에서 GCC 사용하기
+ <span class="date__text">2021-04-15</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/vscode/shortcuts/" rel="permalink">👈 Visual Studio Code 자주 사용하는 단축키 모음
+ <span class="date__text">2021-03-02</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/vscode/markdown/" rel="permalink">👉 Visual Studio Code에서 Markdown(.md) 미리보기
+ <span class="date__text">2021-01-22</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>VS Code 에서 제가 많이 사용하는 단축키들입니다.
+<!--more--></p>
+
+<h2 id="되돌리기-ctrl--z">되돌리기: <strong>ctrl + z</strong></h2>
+
+<h2 id="복사-ctrl--c">복사: <strong>ctrl + c</strong></h2>
+<p>블록설정을 하지 않고 복사할 경우, 줄 전체가 복사됩니다.</p>
+
+<h2 id="잘라내기-ctrl--x">잘라내기: <strong>ctrl + x</strong></h2>
+<p>블록설정을 하지 않고 잘라낼 경우, 줄 전체가 잘라내어 집니다.</p>
+
+<h2 id="붙여넣기-ctrl--v">붙여넣기: <strong>ctrl + v</strong></h2>
+
+<h2 id="검색-ctrl--f">검색: <strong>ctrl + f</strong></h2>
+<p>커서 위치의 단어를 검색합니다.</p>
+
+<h2 id="들여쓰기-ctrl--">들여쓰기: <strong>ctrl + ]</strong></h2>
+<p>커서위치의 줄 또는 블럭설정된 문단 전체를 들여쓰기합니다. (커서가 줄 맨앞에 있거나, 블럭설정된 상태에서는 <strong>tab</strong>키와 동일한 기능을 합니다)</p>
+
+<h2 id="내어쓰기-ctrl--">내어쓰기: <strong>ctrl + [</strong></h2>
+<p>커서위치의 줄 또는 블럭설정된 문단 전체를 내어쓰기합니다.(한칸씩 당깁니다)</p>
+
+<h2 id="줄-복사">줄 복사</h2>
+<ul>
+  <li>아래로 복사: <strong>shift + alt + ↑</strong></li>
+  <li>위로 복사: <strong>shitf + alt + ↓</strong></li>
+</ul>
+
+<p>커서위치의 줄 또는 블럭설정된 문단 전체를 복사합니다.</p>
+
+<h2 id="블럭설정">블럭설정</h2>
+<ul>
+  <li>
+    <p>한글자씩: <strong>shift + 방향키</strong></p>
+  </li>
+  <li>
+    <p>한단어씩: <strong>shift + ctrl + 방향키</strong></p>
+  </li>
+</ul>
+
+<h2 id="다중-커서-마우스-alt--click">다중 커서 (마우스): <strong>alt + click</strong></h2>
+<p>클릭한 위치에 커서가 추가로 생성됩니다.</p>
+
+<h2 id="다중-커서-키보드">다중 커서 (키보드)</h2>
+<ul>
+  <li><strong>ctrl + alt + ↑</strong></li>
+  <li><strong>ctrl + alt + ↓</strong></li>
+</ul>
+
+<p>윗줄이나 아랫줄의 동일한 위치에 커서를 추가로 생성합니다.</p>
+
+<h2 id="주석-처리-ctrl--k-ctrl--c">주석 처리: <strong>ctrl + k ctrl + c</strong></h2>
+<p><strong>ctrl</strong>을 누른 상태에서 <strong>k</strong>와 <strong>c</strong>를 순서대로 누릅니다.</p>
+
+<p>커서위치의 줄 또는 블록설정된 문단 전체를 주석처리합니다.</p>
+
+<h2 id="주석-처리-취소-ctrl--k-ctrl--u">주석 처리 취소: <strong>ctrl + k ctrl + u</strong></h2>
+<p><strong>ctrl</strong>을 누른 상태에서 <strong>k</strong>와 <strong>u</strong>를 순서대로 누릅니다.</p>
+
+<p>주석처리된 커서위치의 줄 또는 블록설정된 문단전체의 주석 처리를 취소합니다.</p>
+
+<h2 id="동일한-단어-선택-ctrl--d">동일한 단어 선택: <strong>ctrl + d</strong></h2>
+<p>커서 위치의 단어와 동일한 단어를 찾아서 선택합니다. 한번 누를 때마다 아래쪽의 동일한 단어가 하나씩 추가로 선택됩니다.</p>
+
+<h2 id="패널터미널-열기--닫기-ctrl--j">패널(터미널) 열기 &amp; 닫기: <strong>ctrl + j</strong></h2>
+<p>아래쪽 패널을 열고 닫습니다. 터미널의 디폴트 위치가 현재 열려있는 폴더로 설정돼서, 프로그램을 작성하고 테스트해볼 때 매우 유용합니다.</p>
+
+<h2 id="사이드바-열기--닫기-ctrl--b">사이드바 열기 &amp; 닫기: <strong>ctrl + b</strong></h2>
+<p>왼쪽의 사이드바를 열고 닫습니다. 화면을 분할해서 작업할 때, 에디터 화면을 크게 볼 수 있어서 유용합니다.</p>
+
+<h2 id="전체화면-f11">전체화면: <strong>f11</strong></h2>
+<p>브라우저의 전체화면과 비슷하게 작업표시줄과 메뉴바를 숨깁니다.</p>
+
+<h2 id="markdown-미리보기-ctrl--k-v">Markdown 미리보기: <strong>ctrl + k v</strong></h2>
+<p><strong>ctrl + k</strong>를 누르고 <strong>v</strong>를 누르면, 화면이 분할되고 오른쪽에 미리보기 창이 열립니다.</p>
+<ul>
+  <li>참고 포스트: <a href="/vscode/markdown/" target="_blank">Visual Studio Code에서 Markdown(.md) 미리보기</a></li>
+</ul>
+
+<h2 id="키보드-단축키-설정창-ctrl--k-ctrl--s">키보드 단축키 설정창: <strong>ctrl + k ctrl + s</strong></h2>
+<p><strong>ctrl</strong>을 누른 상태에서 <strong>k</strong>와 <strong>s</strong>를 순서대로 누르면 키보드 단축키를 확인하고 설정할 수 있는 창이 열립니다.</p>
+
+<h2 id="내가-설정해놓은-단축키">내가 설정해놓은 단축키</h2>
+<p><img src="/assets/post-images/vscode-shortcuts/toggleminimap.png" alt="mine" /></p>
+
+<p>Activity Bar는 왼쪽 끝의 아이콘 패널입니다. Minimap은 오른쪽 끝에 있는, 코드 전체를 한눈에 보여주는 패널 입니다. 이 두개의 패널은 항상 열려있지만 키보드 단축키 설정창에서 토글키를 설정해주면 숨길 수 있습니다.
+노트북으로 작업할 때에 화면이 부족해서 답답한 경우에 전체화면에서 양옆의 패널까지 모두 숨겨주면 훨씬 쾌적하게 작업할 수 있습니다.</p>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="/vscode/markdown/" target="_blank">Visual Studio Code에서 Markdown(.md) 미리보기</a></li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+
+<div>
+    <h3><a href="/categories#visual-studio-code">Visual Studio Code</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/vscode/gcc/" rel="permalink">👉 Visual Studio Code에서 GCC 사용하기
+ <span class="date__text">2021-04-15</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/vscode/shortcuts/" rel="permalink">👈 Visual Studio Code 자주 사용하는 단축키 모음
+ <span class="date__text">2021-03-02</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/vscode/markdown/" rel="permalink">👉 Visual Studio Code에서 Markdown(.md) 미리보기
+ <span class="date__text">2021-01-22</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#shortcut" class="page__taxonomy-item" rel="tag">Shortcut</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#visual-studio-code" class="page__taxonomy-item" rel="tag">Visual Studio Code</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#visual-studio-code" class="page__taxonomy-item" rel="tag">Visual Studio Code</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-03-02T02:07:30+00:00">March 2, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/lol/lolog-monthly/" class="pagination--pager" title="[LoLog.me] 한달간 업데이트 내역
+">이전</a>
+    
+    
+      <a href="/nodejs/helmet/" class="pagination--pager" title="Express 웹사이트 보안 강화하기 [Helmet, CSP]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

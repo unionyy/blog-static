@@ -1,0 +1,1040 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[C++ STL] 순열과 조합 (next_permutation) - 유년시절</title>
+<meta name="description" content="next_permutation 함수는 위와 같이 사용하고 파라미터로 보내진 Iterator 범위 내의 원소들을 다음 경우의 수 배열로 만들어 줍니다. 이 때, 오름차순에서 내림차순으로 가는 경우의 수를 고려합니다. 즉, 오름차순으로 정렬된 배열에 next_permutation 을 계속 사용하면 모든 경우의 수를 거쳐 결국 내림차순으로 정렬됩니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="[C++ STL] 순열과 조합 (next_permutation)">
+<meta property="og:url" content="http://localhost:4000/cpp/next_permutation/">
+
+
+  <meta property="og:description" content="next_permutation 함수는 위와 같이 사용하고 파라미터로 보내진 Iterator 범위 내의 원소들을 다음 경우의 수 배열로 만들어 줍니다. 이 때, 오름차순에서 내림차순으로 가는 경우의 수를 고려합니다. 즉, 오름차순으로 정렬된 배열에 next_permutation 을 계속 사용하면 모든 경우의 수를 거쳐 결국 내림차순으로 정렬됩니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-10T15:05:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/cpp/next_permutation/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[C++ STL] 순열과 조합 (next_permutation)">
+    <meta itemprop="description" content="next_permutation 함수는 위와 같이 사용하고 파라미터로 보내진 Iterator 범위 내의 원소들을 다음 경우의 수 배열로 만들어 줍니다. 이 때, 오름차순에서 내림차순으로 가는 경우의 수를 고려합니다. 즉, 오름차순으로 정렬된 배열에 next_permutation 을 계속 사용하면 모든 경우의 수를 거쳐 결국 내림차순으로 정렬됩니다.">
+    <meta itemprop="datePublished" content="2021-10-10T15:05:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[C++ STL] 순열과 조합 (next_permutation)
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-10-10T15:05:30+00:00">October 10, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#c">C++</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/cpp/next_permutation/" rel="permalink">👈 [C++ STL] 순열과 조합 (next_permutation)
+ <span class="date__text">2021-10-10</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>코딩테스트를 보는 도중에 순열을 만들어야하는 상황이 있었습니다. 시간은 15분이 남아있었고, <strong>next_permutation</strong> 함수 사용법이 정확히 기억나지 않았습니다. (어느 라이브러리에 있는지 생각이 나지 않았습니다 ㅠ)</p>
+
+<p>Bitwise 연산으로 조합은 구현해본 적이 있었으나 순열은 직접 구현해본 적이 없었습니다. 남은 10분여의 시간동안 순열을 구하는 알고리즘을 생각해내고 구현을 하기란 쉽지 않았고 결국 다 푼 문제를 순열을 만들지 못해 틀리게 되었습니다.</p>
+
+<p>이번 기회에 <strong>next_permutation</strong> 함수를 제대로 정리하고 기억해두려합니다. 또한 <strong>next_permutaion</strong> 함수가 어떻게 생겼는지 살펴보고 순열을 직접 구현할 수 있도록 했습니다.</p>
+
+<h2 id="next_permutation-사용법">next_permutation 사용법</h2>
+
+<ul>
+  <li><a href="https://en.cppreference.com/w/cpp/algorithm/next_permutation" target="_blank">std::next_permutation</a></li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">next_permutation</span><span class="p">(</span><span class="n">Arr</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">Arr</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</code></pre></div></div>
+<p><strong>next_permutation</strong> 함수는 위와 같이 사용하고 파라미터로 보내진 Iterator 범위 내의 원소들을 다음 경우의 수 배열로 만들어 줍니다. 이 때, 오름차순에서 내림차순으로 가는 경우의 수를 고려합니다.</p>
+
+<p>즉, 오름차순으로 정렬된 배열에 <strong>next_permutation</strong> 을 계속 사용하면 모든 경우의 수를 거쳐 결국 내림차순으로 정렬됩니다.</p>
+
+<p><strong>next_permutation</strong> 함수는 bool 형식의 값을 반환합니다. 함수가 제대로 작동했으면 true 를 리턴하고 이미 배열이 내림차순으로 정렬되어있을 경우에는 false 를 반환합니다.</p>
+
+<h2 id="예시">예시</h2>
+<p>다음은 레퍼런스 페이지에서 제공하는 예시입니다.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;algorithm&gt;
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+</span> 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"aba"</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">next_permutation</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">()));</span>
+<span class="p">}</span>
+
+<span class="cm">/* OUTPUT */</span>
+<span class="cm">/* aab    */</span>
+<span class="cm">/* aba    */</span>
+<span class="cm">/* baa    */</span>
+</code></pre></div></div>
+
+<h2 id="next_permutation-함수-살펴보기">next_permutation 함수 살펴보기</h2>
+
+<p><strong>next_permutation</strong> 함수는 이렇게 생겼습니다.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">BidirIt</span><span class="p">&gt;</span>
+<span class="kt">bool</span> <span class="nf">next_permutation</span><span class="p">(</span><span class="n">BidirIt</span> <span class="n">first</span><span class="p">,</span> <span class="n">BidirIt</span> <span class="n">last</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">first</span> <span class="o">==</span> <span class="n">last</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">BidirIt</span> <span class="n">i</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">first</span> <span class="o">==</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+ 
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">BidirIt</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">;</span>
+ 
+        <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*--</span><span class="n">i</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">i1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">i2</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>
+            <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;</span> <span class="o">*--</span><span class="n">i2</span><span class="p">))</span>
+                <span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">iter_swap</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i2</span><span class="p">);</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">reverse</span><span class="p">(</span><span class="n">i1</span><span class="p">,</span> <span class="n">last</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">first</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">reverse</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>위 코드의 알고리즘은 이렇습니다.</p>
+
+<ol>
+  <li>
+    <p>맨 뒤에서부터 인접한 두개의 수를 비교한다. (뒤에서부터 내림차순이 아닌 위치를 찾기 위함)</p>
+  </li>
+  <li>
+    <p>앞의 수(A)가 작을 경우 비교를 멈춘다. (A 뒤에 있는 수들은 내림차순으로 정렬되어있는 상태)</p>
+  </li>
+  <li>
+    <p>맨 뒤에서부터 A와 비교하여 A보다 커지는 지점(B)을 찾는다.</p>
+  </li>
+  <li>
+    <p>A와 B를 스왑한다. (여전히 뒤의 수들은 내림차순)</p>
+  </li>
+  <li>
+    <p>뒤의 수들을 반전시킨다. (내림차순에서 오름차순으로 만든다)</p>
+  </li>
+</ol>
+
+<p>생각보다 간단하고 깔끔한 알고리즘으로 구현되어 있어서 놀랐습니다. 그래서 코딩 테스트 도중에 구현하지 못하였던 것이 더욱 아쉬웠습니다. 이제 순열을 구현하는 방법은 절대 잊지 않을 것 같습니다!</p>
+
+<h2 id="조합으로-사용하기">조합으로 사용하기</h2>
+<p><strong>next_permutation</strong> 함수는 조합을 구현할 때에도 사용할 수 있습니다.</p>
+
+<p>0과 1으로만 이루어진 배열(0이 1보다 앞에 있어야함)을 만들어서 <strong>next_permutation</strong> 함수를 연속적으로 호출하면 000…0111…1 부터 111…1000…1 까지 모든 경우의 수를 얻을 수 있습니다.</p>
+
+<p>예시</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+</span> 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">Arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">Arr</span><span class="p">,</span> <span class="n">Arr</span><span class="o">+</span><span class="mi">5</span><span class="p">);</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">elem</span> <span class="o">:</span> <span class="n">Arr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">elem</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">next_permutation</span><span class="p">(</span><span class="n">Arr</span><span class="p">,</span> <span class="n">Arr</span><span class="o">+</span><span class="mi">5</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// OUTPUT</span>
+<span class="c1">// 00111</span>
+<span class="c1">// 01011</span>
+<span class="c1">// 01101</span>
+<span class="c1">// 01110</span>
+<span class="c1">// 10011</span>
+<span class="c1">// 10101</span>
+<span class="c1">// 10110</span>
+<span class="c1">// 11001</span>
+<span class="c1">// 11010</span>
+<span class="c1">// 11100</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://en.cppreference.com/w/cpp/algorithm/next_permutation" target="_blank">std::next_permutation</a></li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#c">C++</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/cpp/next_permutation/" rel="permalink">👈 [C++ STL] 순열과 조합 (next_permutation)
+ <span class="date__text">2021-10-10</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#stl" class="page__taxonomy-item" rel="tag">STL</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#c" class="page__taxonomy-item" rel="tag">C++</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-10-10T15:05:30+00:00">October 10, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/lol/game-duration/" class="pagination--pager" title="[Match-V5 업데이트] gameDuration 변경 및 gameEndTimestamp 추가 (Riot API)
+">이전</a>
+    
+    
+      <a href="/study/algorithm2021/" class="pagination--pager" title="삼성전자 2021 하계 대학생 S/W 알고리즘 역량강화 특강 수료 후기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

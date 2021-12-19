@@ -1,0 +1,1262 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Express 웹사이트 보안 강화하기 [Helmet, CSP] - 유년시절</title>
+<meta name="description" content="Express로 만들어진 웹 사이트의 보안을 강화하기 위해 Helmet 미들웨어를 사용합니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="Express 웹사이트 보안 강화하기 [Helmet, CSP]">
+<meta property="og:url" content="http://localhost:4000/nodejs/helmet/">
+
+
+  <meta property="og:description" content="Express로 만들어진 웹 사이트의 보안을 강화하기 위해 Helmet 미들웨어를 사용합니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-03-06T04:56:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/nodejs/helmet/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Express 웹사이트 보안 강화하기 [Helmet, CSP]">
+    <meta itemprop="description" content="Express로 만들어진 웹 사이트의 보안을 강화하기 위해 Helmet 미들웨어를 사용합니다.">
+    <meta itemprop="datePublished" content="2021-03-06T04:56:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Express 웹사이트 보안 강화하기 [Helmet, CSP]
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-03-06T04:56:30+00:00">March 6, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#node-js">Node.js</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/pm2-config/" rel="permalink">👉 [PM2] Configuration File 로 프로세스 한번에 관리하기
+ <span class="date__text">2021-10-04</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/pm2-options/" rel="permalink">👉 [PM2 옵션] 앱 이름, 시간 로그, argv, 메모리 제한 (<code class="language-plaintext highlighter-rouge">--name</code>, <code class="language-plaintext highlighter-rouge">--time</code>, <code class="language-plaintext highlighter-rouge">--</code> , <code class="language-plaintext highlighter-rouge">--max-memory-restart</code>)
+ <span class="date__text">2021-10-04</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/make-not-found/" rel="permalink">👉 [npm 오류] Error: not found: make
+ <span class="date__text">2021-10-04</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/nodejs/helmet/" rel="permalink">👈 Express 웹사이트 보안 강화하기 [Helmet, CSP]
+ <span class="date__text">2021-03-06</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/crawler/" rel="permalink">👉 Node.js로 네이버 크롤링하기(맛보기)
+ <span class="date__text">2021-01-23</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>Express로 만들어진 웹 사이트의 보안을 강화하기 위해 <a href="https://helmetjs.github.io/" target="_blank">Helmet</a> 미들웨어를 사용합니다.
+<!--more--></p>
+
+<h2 id="설치-및-사용법">설치 및 사용법</h2>
+<ul>
+  <li>
+    <p><a href="https://helmetjs.github.io/" target="_blank">Helmet</a></p>
+  </li>
+  <li>
+    <p><a href="https://expressjs.com/en/advanced/best-practice-security.html" target="_blank">Production Best Practices: Security</a></p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install helmet --save
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">helmet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">helmet</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// 모든 기능 사용</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
+
+<span class="c1">// or, 특정 기능 사용</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">dnsPrefetchControl</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">expectCt</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hidePoweredBy</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hsts</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">ieNoOpen</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noSniff</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">permittedCrossDomainPolicies</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">referrerPolicy</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">xssFilter</span><span class="p">());</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<h2 id="content-security-policy-csp">Content Security Policy (CSP)</h2>
+<p>CSP를 사용하면 웹사이트의 http응답에 CSP 헤더가 추가됩니다. CSP 헤더가 존재할 경우, 브라우저는 CSP 헤더에 언급되지 않은 리소스들을 로드하지 않습니다. Helmet의 CSP 기본설정은 ‘self’ 즉, 자신의 웹사이트에 존재하는 리소스들만을 허용합니다.</p>
+
+<p><img src="/assets/post-images/lolog-helmet/broken.png" alt="Broken LoLog.me" />
+(CSP로 인해 리소스를 가져오지 못한 웹페이지 <a href="https://lolog.me/" target="_blank">LoLog.me</a>)</p>
+
+<p>그래서 CDN 등의 외부 사이트의 소스를 이용할 경우, 또는 다른 웹사이트에서 이미지 로드하는 경우, 심지어 인라인 스크립트로 자바스크립트 코드를 작성한 경우 모두 에러를 발생시킵니다. 이를 해결하기 위해서는 웹 페이지가 사용할 신뢰할 수 있는 리소스들의 도메인을 CSP 헤더에 추가해야합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cspOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// 기본 옵션을 가져옵니다.</span>
+    <span class="p">...</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">.</span><span class="nx">getDefaultDirectives</span><span class="p">(),</span>
+    
+    <span class="c1">// 구글 API 도메인과 인라인된 스크립트를 허용합니다.</span>
+    <span class="dl">"</span><span class="s2">script-src</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*.googleapis.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">'unsafe-inline'</span><span class="dl">"</span><span class="p">],</span>
+
+    <span class="c1">// 리그오브레전드 사이트의 이미지 소스를 허용합니다.</span>
+    <span class="dl">"</span><span class="s2">img-src</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*.leagueoflegends.com</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Helmet의 모든 기능 사용. (contentSecurityPolicy에는 custom option 적용)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">({</span>
+  <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="nx">cspOptions</span><span class="p">,</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<h2 id="unsafe-inline-대체하기">‘unsafe-inline’ 대체하기</h2>
+<p>CSP 헤더에 ‘unsafe-inline’을 추가하면, 인라인된 스크립트의 실행이 허용됩니다. 그러나 이는 해커가 웹사이트의 inline 스크립트를 주입하여 보안상의 위협을 가할 수 있게 합니다. 이를 해결하는 방법은 세가지가 있습니다.</p>
+
+<h3 id="1-inline-script-없애기">1. inline script 없애기</h3>
+<p>기존에 작성했던 인라인 스크립트를 개별 파일로 옮기고, js 파일 자체를 script 태그의 src 속성으로 추가하면 됩니다. onclick 속성과 같이, 태그 내부에서 자바스크립트를 실행하는 속성들은 js 파일에서 addEventListener() 함수로 대체할 수 있습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"btn"</span> <span class="na">onclick=</span><span class="s">"doSomething()"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+<p>버튼 태그의 onclick 속성을</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">btn</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">doSomething</span><span class="p">);</span>
+
+<span class="c1">// jQuery 이용시</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#btn</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">dosomething</span><span class="p">);</span>
+</code></pre></div></div>
+<p>addEventListener() 함수를 호출함으로써 대체할 수 있습니다. (또는 jQuery 이용)</p>
+
+<h3 id="2-nonce-속성-이용">2. nonce 속성 이용</h3>
+<p>웹페이지를 로드할 때마다 무작위로 생성된 nonce 속성을 인라인 스크립트에 부여하고, 이를 CSP 헤더에 추가합니다. 응답(response) 마다 다른 nonce 값이 설정되므로, 제 3자가 인라인 스크립트를 주입하기 어려워집니다.</p>
+
+<p>Express에서 nonce 생성 및 사용 예제</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// nonce 생성</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">cspNonce</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mi">16</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// helmet 설정 예</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+  <span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">({</span>
+    <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">scriptSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`'nonce-</span><span class="p">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">cspNonce</span><span class="p">}</span><span class="s2">'`</span><span class="p">]</span>
+    <span class="p">},</span>
+  <span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>HTML에서 script 태그에 nonce 속성 추가</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">nonce=</span><span class="s">"{cspNonce Value}"</span><span class="nt">&gt;</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hi</span><span class="dl">'</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+<h3 id="3-hash-사용">3. hash 사용</h3>
+<p>각각의 인라인 스크립트의 hash 값을 CSP에 추가합니다. ‘inline-unsafe’ 속성을 제거한 채로 브라우저에서 웹페이지를 로드할 경우 에러 메시지가 뜨는데, 메시지 내부에 해당 인라인 스크립트의 해시값을 얻을 수 있습니다.</p>
+
+<p><img src="/assets/post-images/lolog-helmet/error.png" alt="Error massages" />
+빨간 박스 안의 값이 해시값입니다. inline script 마다 고유한 해시값을 갖고 있습니다. CSP의 scriptSrc 옵션에 해당한는 해시값을 추가하면 됩니다. (여러개의 inline script가 있을 경우에는 각각의 해시값을 모두 넣어야합니다.)</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// helmet 설정 예</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+  <span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">({</span>
+    <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">scriptSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="p">,</span> <span class="dl">"</span><span class="s2">'sha256-8tCjiEiH4STP6Nn4TLcbKGQVABm858n6iZwulDeFJFA='</span><span class="dl">"</span><span class="p">]</span>
+    <span class="p">},</span>
+  <span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>hash를 사용할 경우에는 각각의 inline script 마다 해시값을 추가해야하고, inline script가 매번 바뀔 경우 해시값도 매번 바뀌게 된다는 단점이 있습니다. 웹사이트에 inline script가 매우 적고, 항상 동일할 경우에만 사용하는 것이 좋겟습니다.</p>
+
+<h2 id="csp에-google-gtag-추가-google-tag-manager">CSP에 Google Gtag 추가 (Google Tag Manager)</h2>
+<p>Google Gtag를 손쉽게 관리하기 위해서, 기존 Gtag 코드를 Google Tag Manage로 대체했습니다.</p>
+<ul>
+  <li><a href="https://support.google.com/tagmanager/answer/6103696?hl=ko" target="_blank">태그 관리자 설정 및 설치하기</a></li>
+</ul>
+
+<p>태그 관리자 코드에 nonce를 추가하고 몇몇 도메인을 허용해주면, CSP와 함께 구글 태그 관리자를 정상적으로 사용할 수 있습니다.</p>
+<ul>
+  <li><a href="https://developers.google.com/tag-manager/web/csp" target="_blank">Using Google Tag Manager with a Content Security Policy</a></li>
+</ul>
+
+<p>nonce를 추가한 Google Tag Manager 구성 태그</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Google Tag Manager --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">nonce=</span><span class="s">'{SERVER-GENERATED-NONCE}'</span><span class="nt">&gt;</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="nx">d</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">l</span><span class="p">,</span><span class="nx">i</span><span class="p">){</span><span class="nx">w</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span><span class="o">=</span><span class="nx">w</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span><span class="o">||</span><span class="p">[];</span><span class="nx">w</span><span class="p">[</span><span class="nx">l</span><span class="p">].</span><span class="nx">push</span><span class="p">({</span><span class="dl">'</span><span class="s1">gtm.start</span><span class="dl">'</span><span class="p">:</span>
+<span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">(),</span><span class="na">event</span><span class="p">:</span><span class="dl">'</span><span class="s1">gtm.js</span><span class="dl">'</span><span class="p">});</span><span class="kd">var</span> <span class="nx">f</span><span class="o">=</span><span class="nx">d</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">s</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+<span class="nx">j</span><span class="o">=</span><span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="nx">dl</span><span class="o">=</span><span class="nx">l</span><span class="o">!=</span><span class="dl">'</span><span class="s1">dataLayer</span><span class="dl">'</span><span class="p">?</span><span class="dl">'</span><span class="s1">&amp;l=</span><span class="dl">'</span><span class="o">+</span><span class="nx">l</span><span class="p">:</span><span class="dl">''</span><span class="p">;</span><span class="nx">j</span><span class="p">.</span><span class="k">async</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span><span class="nx">j</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span>
+<span class="dl">'</span><span class="s1">https://www.googletagmanager.com/gtm.js?id=</span><span class="dl">'</span><span class="o">+</span><span class="nx">i</span><span class="o">+</span><span class="nx">dl</span><span class="p">;</span><span class="kd">var</span> <span class="nx">n</span><span class="o">=</span><span class="nx">d</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[nonce]</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">n</span><span class="o">&amp;&amp;</span><span class="nx">j</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">nonce</span><span class="dl">'</span><span class="p">,</span><span class="nx">n</span><span class="p">.</span><span class="nx">nonce</span><span class="o">||</span><span class="nx">n</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">nonce</span><span class="dl">'</span><span class="p">));</span><span class="nx">f</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">j</span><span class="p">,</span><span class="nx">f</span><span class="p">);</span>
+<span class="p">})(</span><span class="nb">window</span><span class="p">,</span><span class="nb">document</span><span class="p">,</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">dataLayer</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">GTM-{YOUR-CONTAINER-ID}</span><span class="dl">'</span><span class="p">);</span><span class="nt">&lt;/script&gt;</span>
+<span class="c">&lt;!-- End Google Tag Manager --&gt;</span>
+</code></pre></div></div>
+
+<p>추가해야할 CSP 옵션 (Google Tag Manager + Google Analytics)</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// nonce 생성</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">cspNonce</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mi">16</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// contentSecurityPolicy 옵션</span>
+<span class="kd">const</span> <span class="nx">cspOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">.</span><span class="nx">getDefaultDirectives</span><span class="p">(),</span>
+    <span class="dl">"</span><span class="s2">script-src</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.googletagmanager.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.google-analytics.com</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">https://ssl.google-analytics.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://tagmanager.google.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*.gstatic.com</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`'nonce-</span><span class="p">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">cspNonce</span><span class="p">}</span><span class="s2">'`</span><span class="p">],</span>
+    <span class="dl">"</span><span class="s2">img-src</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">www.googletagmanager.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.google-analytics.com</span><span class="dl">"</span> <span class="p">,</span>
+      <span class="dl">"</span><span class="s2">https://*.gstatic.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.gstatic.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">],</span>
+   
+    <span class="dl">"</span><span class="s2">connect-src</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.google-analytics.com</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// contentSecurityPolicy 옵션과 함께 Helmet 기능 전체 활성화</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">({</span>
+  <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="nx">cspOptions</span><span class="p">,</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li>
+    <p><a href="https://helmetjs.github.io/" target="_blank">Helmet</a></p>
+  </li>
+  <li>
+    <p><a href="https://expressjs.com/en/advanced/best-practice-security.html" target="_blank">Production Best Practices: Security</a></p>
+  </li>
+  <li>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">Content Security Policy (CSP)</a></p>
+  </li>
+  <li>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src" target="_blank">CSP: script-src</a></p>
+  </li>
+  <li>
+    <p><a href="https://developers.google.com/web/fundamentals/security/csp" target="_blank">Content Security Policy</a></p>
+  </li>
+  <li>
+    <p><a href="https://support.google.com/tagmanager/answer/6103696?hl=ko" target="_blank">태그 관리자 설정 및 설치하기</a></p>
+  </li>
+  <li>
+    <p><a href="https://developers.google.com/tag-manager/web/csp" target="_blank">Using Google Tag Manager with a Content Security Policy</a></p>
+  </li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#node-js">Node.js</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/pm2-config/" rel="permalink">👉 [PM2] Configuration File 로 프로세스 한번에 관리하기
+ <span class="date__text">2021-10-04</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/pm2-options/" rel="permalink">👉 [PM2 옵션] 앱 이름, 시간 로그, argv, 메모리 제한 (<code class="language-plaintext highlighter-rouge">--name</code>, <code class="language-plaintext highlighter-rouge">--time</code>, <code class="language-plaintext highlighter-rouge">--</code> , <code class="language-plaintext highlighter-rouge">--max-memory-restart</code>)
+ <span class="date__text">2021-10-04</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/make-not-found/" rel="permalink">👉 [npm 오류] Error: not found: make
+ <span class="date__text">2021-10-04</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/nodejs/helmet/" rel="permalink">👈 Express 웹사이트 보안 강화하기 [Helmet, CSP]
+ <span class="date__text">2021-03-06</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/nodejs/crawler/" rel="permalink">👉 Node.js로 네이버 크롤링하기(맛보기)
+ <span class="date__text">2021-01-23</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#csp" class="page__taxonomy-item" rel="tag">CSP</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#express" class="page__taxonomy-item" rel="tag">Express</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#helmet" class="page__taxonomy-item" rel="tag">Helmet</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#node-js" class="page__taxonomy-item" rel="tag">Node.js</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#node-js" class="page__taxonomy-item" rel="tag">Node.js</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-03-06T04:56:30+00:00">March 6, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/vscode/shortcuts/" class="pagination--pager" title="Visual Studio Code 자주 사용하는 단축키 모음
+">이전</a>
+    
+    
+      <a href="/lol/lolog-match/" class="pagination--pager" title="[LoLog.me] 리그오브레전드 전적 상세 조회 기능 추가
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

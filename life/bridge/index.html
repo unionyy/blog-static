@@ -1,0 +1,1108 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산) - 유년시절</title>
+<meta name="description" content="넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다.  변수가 없는 상황(유리 장인 X, 기억 못하는 경우 X)에서 각 참가자별로 성공할 확률이 얼마나 되는지 계산해보겠습니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)">
+<meta property="og:url" content="http://localhost:4000/life/bridge/">
+
+
+  <meta property="og:description" content="넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다.  변수가 없는 상황(유리 장인 X, 기억 못하는 경우 X)에서 각 참가자별로 성공할 확률이 얼마나 되는지 계산해보겠습니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-14T06:34:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/life/bridge/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)">
+    <meta itemprop="description" content="넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다.변수가 없는 상황(유리 장인 X, 기억 못하는 경우 X)에서 각 참가자별로 성공할 확률이 얼마나 되는지 계산해보겠습니다.">
+    <meta itemprop="datePublished" content="2021-11-14T06:34:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-11-14T06:34:30+00:00">November 14, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#life">Life</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/life/bridge2/" rel="permalink">👉 오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)
+ <span class="date__text">2021-11-16</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/life/bridge/" rel="permalink">👈 오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)
+ <span class="date__text">2021-11-14</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p>넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다.</p>
+
+<p>변수가 없는 상황(유리 장인 X, 기억 못하는 경우 X)에서 각 참가자별로 성공할 확률이 얼마나 되는지 계산해보겠습니다.
+<!--more--></p>
+
+<h2 id="참가자-수와-확률">참가자 수와 확률</h2>
+<p>참가자 수에 상관 없이 N번째 참가자의 성공 확률은 동일합니다. 참가자 번호가 증가할 수록 성공 확률이 증가하다가 19번째 참가자 부터는 무조건 성공하게 됩니다. 오징어 게임에서는 참가자가 16명 이었지만 19번 참가자까지의 성공 확률을 계산해보겠습니다.</p>
+
+<h2 id="전체-경우의-수">전체 경우의 수</h2>
+<p>전체 경우의 수를 계산해봅시다. 각각의 유리는 깨지거나, 깨지지 않거나 두가지 경우의 수를 갖고 있습니다. 총 18쌍의 유리가 존재하므로 전체 경우의 수는 2^18 = 262,144 가 됩니다.</p>
+
+<h2 id="각-참가자별-경우의-수">각 참가자별 경우의 수</h2>
+<p>첫번째 참가자가 성공할 경우의 수는 18개의 유리가 모두 깨지지 않을 경우입니다. 이는 18C0, 즉 1입니다.</p>
+
+<p>두번재 참가자가 성공할 경우의 수는 첫번째 참가자가 성공할 확률 + 유리가 1개만 깨질 경우 즉, 18C0 + 18C1 = 19 입니다.</p>
+
+<p>마찬가지로 세번째 참가자가 성공할 확률은 18C0 + 18C1 + 18C2 = 172 가 됩니다.</p>
+
+<p>…</p>
+
+<p>19번째 참가자가 성공할 경우의 수는 18C0 + 18C1 + … + 18C18 = 262,144 입니다. (전체 경우의 수와 같습니다!)</p>
+
+<h2 id="확률">확률</h2>
+<p>위에서 구한 경우의 수를 바탕으로 각 참가자별 성공 확률을 계산해 보았습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>참가자 번호</th>
+      <th>경우의 수(18Cn)</th>
+      <th>누적(Σ18Cn)</th>
+      <th>성공확률</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.000381%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>18</td>
+      <td>19</td>
+      <td>0.00725%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>153</td>
+      <td>172</td>
+      <td>0.0656%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>816</td>
+      <td>988</td>
+      <td>0.377%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>3060</td>
+      <td>4048</td>
+      <td>1.544%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>8568</td>
+      <td>12616</td>
+      <td>4.813%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>18564</td>
+      <td>31180</td>
+      <td>11.894%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>31824</td>
+      <td>63004</td>
+      <td>24.034%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>43758</td>
+      <td>106762</td>
+      <td>40.726%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>48620</td>
+      <td>155382</td>
+      <td>59.274%</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>43758</td>
+      <td>199140</td>
+      <td>75.966%</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>31824</td>
+      <td>230964</td>
+      <td>88.106%</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>18564</td>
+      <td>249528</td>
+      <td>95.187%</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>8568</td>
+      <td>258096</td>
+      <td>98.456%</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>3060</td>
+      <td>261156</td>
+      <td>99.623%</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>816</td>
+      <td>261972</td>
+      <td>99.934%</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>153</td>
+      <td>262125</td>
+      <td>99.993%</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>18</td>
+      <td>262143</td>
+      <td>99.9996%</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>1</td>
+      <td>262144</td>
+      <td>100%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="이항분포">이항분포</h2>
+<p>각 참가자가 본인부터 성공할 확률은 유리가 (본인의 순서 - 1)개 깨질 확률과 같습니다. 이는 성공확률이 1/2 이고, 시행 횟수가 18(유리의 개수)인 이항분포를 따릅니다.</p>
+
+<ul>
+  <li>참고자료: <a href="https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html" target="_blank">Chapter 3 정규분포(Normal distribution)</a></li>
+</ul>
+
+<p>따라서 각 참가자가 성공할 확률은 확률이 1/2 이고, 시행 횟수가 18인 이항분포의 누적합입니다.</p>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html" target="_blank">Chapter 3 정규분포(Normal distribution)</a></li>
+  <li><a href="https://secstart.tistory.com/970" target="_blank">엑셀 COMBIN 함수로 조합수 구하기</a></li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#life">Life</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/life/bridge2/" rel="permalink">👉 오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)
+ <span class="date__text">2021-11-16</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/life/bridge/" rel="permalink">👈 오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)
+ <span class="date__text">2021-11-14</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#squid-game" class="page__taxonomy-item" rel="tag">Squid Game</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#life" class="page__taxonomy-item" rel="tag">Life</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-11-14T06:34:30+00:00">November 14, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/study/samsungb3/" class="pagination--pager" title="삼성전자 SW 역량테스트 B형 후기 3 (두번째 테스트)
+">이전</a>
+    
+    
+      <a href="/life/bridge2/" class="pagination--pager" title="오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1250 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JavaScript 차트 만들기[Frappe Charts] - 유년시절</title>
+<meta name="description" content="Frappe Charts는 SVG 차트를 쉽게 만들게 해주는 오픈소스 모듈입니다. 여러가지 종류의 깔끔한 그래프들을 간편하게 만들 수 있습니다.">
+
+
+  <meta name="author" content="유년">
+  
+  <meta property="article:author" content="유년">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유년시절">
+<meta property="og:title" content="JavaScript 차트 만들기[Frappe Charts]">
+<meta property="og:url" content="http://localhost:4000/js/frappe-charts/">
+
+
+  <meta property="og:description" content="Frappe Charts는 SVG 차트를 쉽게 만들게 해주는 오픈소스 모듈입니다. 여러가지 종류의 깔끔한 그래프들을 간편하게 만들 수 있습니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/teaser.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-19T01:19:30+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/js/frappe-charts/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "유년",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="RJmqWBTSut2QXBuWlz8a_IpkN799k1bXsxtK3ex1eyY" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="71c5f3d91511cd63b03839074629bcb3feb95bac">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- Google Adsense Code -->
+
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          유년시절
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">유년</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Somewhere, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Blog</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">unionyy</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">yoonyeony</span></a></li>
+          
+        
+          
+            <li><a href="mailto:kyh4323@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JavaScript 차트 만들기[Frappe Charts]">
+    <meta itemprop="description" content="Frappe Charts는 SVG 차트를 쉽게 만들게 해주는 오픈소스 모듈입니다. 여러가지 종류의 깔끔한 그래프들을 간편하게 만들 수 있습니다.">
+    <meta itemprop="datePublished" content="2021-02-19T01:19:30+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">JavaScript 차트 만들기[Frappe Charts]
+</h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-02-19T01:19:30+00:00">February 19, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        
+          <aside class="sidebar__right side__ad sticky">
+            
+          </aside>
+        
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#javascript">JavaScript</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/js/compress/" rel="permalink">👉 [JavaScript Compressor] 자바스크립트 코드 압축하기
+ <span class="date__text">2021-03-19</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/js/charts-donut/" rel="permalink">👉 JavaScript 도넛 차트 만들기[Google Charts]
+ <span class="date__text">2021-02-24</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/js/frappe-charts/" rel="permalink">👈 JavaScript 차트 만들기[Frappe Charts]
+ <span class="date__text">2021-02-19</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/js/jquery-cdn/" rel="permalink">👉 jQuery 설치 없이 사용하기[CDN]
+ <span class="date__text">2021-01-26</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        <hr />
+
+<p><a href="https://frappe.io/charts" target="_blank">Frappe Charts</a>는 SVG 차트를 쉽게 만들게 해주는 오픈소스 모듈입니다. 여러가지 종류의 깔끔한 그래프들을 간편하게 만들 수 있습니다.
+<!--more--></p>
+
+<h2 id="cdn을-사용하여-설치하지-않고-사용하기">CDN을 사용하여 설치하지 않고 사용하기</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/frappe-charts@1.5.6/dist/frappe-charts.min.iife.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>해당 코드를 웹페이지의 head 태그 안에 삽입하면 CDN을 통해 Frappe Charts를 이용할 수 있습니다. 현재 기준으로는 1.5.6버전이 최신버전입니다.  <a href="https://github.com/frappe/charts/releases" target="_blank">GitHub Release</a>에서 최신버전을 확인하시고 사용하시는 것을 추천합니다.</p>
+
+<p>CDN에 대한 설명은 jQuery 관련 포스트를 참고하세요.</p>
+<ul>
+  <li><a href="/js/jquery-cdn/" target="_blank">jQuery 설치 없이 사용하기[CDN]</a></li>
+</ul>
+
+<h2 id="차트-삽입">차트 삽입</h2>
+<p>차트를 삽입할 위치에 div 태그를 추가하고 id를 설정해줍니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"chart"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+<p>그리고 <code class="language-plaintext highlighter-rouge">frappe.Chart()</code> 함수를 사용해 차트를 생성해줍니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">labels</span><span class="p">:</span> <span class="p">[</span>
+                <span class="dl">'</span><span class="s1">0min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">1min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">2min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">3min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">4min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">5min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">6min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">7min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">8min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">9min</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">10min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">11min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">12min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">13min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">14min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">15min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">16min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">17min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">18min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">19min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">20min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">21min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">22min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">23min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">24min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">25min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">26min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">27min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">28min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">29min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">30min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">31min</span><span class="dl">'</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">32min</span><span class="dl">'</span>
+              <span class="p">],</span>
+      <span class="na">datasets</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player 1</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+              <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">564</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span>
+              <span class="mi">340</span><span class="p">,</span> <span class="mi">671</span><span class="p">,</span> <span class="mi">549</span><span class="p">,</span> <span class="mi">868</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">410</span><span class="p">,</span>
+              <span class="mi">701</span><span class="p">,</span>  <span class="mi">971</span><span class="p">,</span>  <span class="mi">231</span><span class="p">,</span> <span class="mi">646</span><span class="p">,</span>  <span class="mi">811</span><span class="p">,</span> <span class="mi">1241</span><span class="p">,</span>  <span class="mi">99</span><span class="p">,</span>
+              <span class="mi">146</span><span class="p">,</span>  <span class="mi">712</span><span class="p">,</span>  <span class="mi">140</span><span class="p">,</span> <span class="mi">485</span><span class="p">,</span>  <span class="mi">483</span><span class="p">,</span>  <span class="mi">711</span><span class="p">,</span> <span class="mi">237</span><span class="p">,</span>
+              <span class="mi">410</span><span class="p">,</span> <span class="mi">1089</span><span class="p">,</span> <span class="mi">1460</span><span class="p">,</span> <span class="mi">875</span><span class="p">,</span> <span class="mi">1171</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player 2</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+              <span class="mi">500</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">194</span><span class="p">,</span>  <span class="mi">548</span><span class="p">,</span>  <span class="mi">748</span><span class="p">,</span> <span class="mi">1401</span><span class="p">,</span>
+              <span class="mi">149</span><span class="p">,</span>  <span class="mi">734</span><span class="p">,</span> <span class="mi">1231</span><span class="p">,</span>  <span class="mi">214</span><span class="p">,</span>  <span class="mi">336</span><span class="p">,</span>  <span class="mi">949</span><span class="p">,</span>
+              <span class="mi">1681</span><span class="p">,</span>  <span class="mi">133</span><span class="p">,</span>  <span class="mi">364</span><span class="p">,</span>  <span class="mi">601</span><span class="p">,</span> <span class="mi">1136</span><span class="p">,</span>  <span class="mi">253</span><span class="p">,</span>
+              <span class="mi">590</span><span class="p">,</span>  <span class="mi">112</span><span class="p">,</span>  <span class="mi">514</span><span class="p">,</span>   <span class="mi">11</span><span class="p">,</span>  <span class="mi">559</span><span class="p">,</span>  <span class="mi">376</span><span class="p">,</span>
+              <span class="mi">1214</span><span class="p">,</span>   <span class="mi">37</span><span class="p">,</span>  <span class="mi">544</span><span class="p">,</span>  <span class="mi">117</span><span class="p">,</span>  <span class="mi">719</span><span class="p">,</span> <span class="mi">1249</span><span class="p">,</span>
+              <span class="mi">1438</span><span class="p">,</span> <span class="mi">2007</span><span class="p">,</span>  <span class="mi">276</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+            
+    <span class="kd">const</span> <span class="nx">chart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">frappe</span><span class="p">.</span><span class="nx">Chart</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chart</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Current Gold</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 'bar', 'line', 'scatter', 'pie', 'percentage'</span>
+      <span class="na">height</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+      <span class="na">colors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">#7cd6fd</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#743ee2</span><span class="dl">'</span><span class="p">]</span>
+      <span class="na">lineOptions</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">hideDots</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// default: 0</span>
+        <span class="na">regionFill</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// default: 0</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">data</code> 옵션을 통해 <code class="language-plaintext highlighter-rouge">label</code>과 <code class="language-plaintext highlighter-rouge">datasets</code>을 설정해줍니다.</p>
+
+<p>그 외에 여러 옵션들을 수정하면서 원하는 그래프를 만들 수 있습니다.</p>
+
+<ul>
+  <li><a href="https://frappe.io/charts/docs/reference/configuration" target="_blank">Configuration</a></li>
+</ul>
+
+<p><img src="/assets/post-images/frappe-charts/line.png" alt="line chart" /></p>
+
+<h2 id="그래프-숨기기">그래프 숨기기</h2>
+
+<p>Frappe Charts는 아직까지 유저가 원하는 데이터만을 보여주는 기능을 제공하지 않습니다. (제가 찾지 못한 것이라면 알려주세요 ㅠ)</p>
+
+<p>CSS의 display 옵션을 이용해서 각각의 데이터를 보여주거나 없애는 토글 버튼을 만들었습니다.</p>
+
+<p>먼저 default로 모든 그래프를 보이지 않게 설정해주었습니다. (head 태그에 추가)</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+    <span class="nc">.dataset-units</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Hide()</code> 함수를 만들어서 인자로 받은 dataset을 보여주거나 사라지게 했습니다. (head 태그에 추가)</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="kd">function</span> <span class="nx">Hide</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>마지막으로 body 태그에 각각의 데이터셋에 해당하는 버튼을 만들어줍니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"Hide('dataset-0')"</span><span class="nt">&gt;</span>Player 1<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"Hide('dataset-1')"</span><span class="nt">&gt;</span>Player 2<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"Hide('dataset-2')"</span><span class="nt">&gt;</span>Player 3<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+<p><img src="/assets/post-images/frappe-charts/toggle.png" alt="toggle" /></p>
+
+<h2 id="히트맵-github-contribution-graph">히트맵, GitHub Contribution Graph</h2>
+
+<p>Frappe Charts는 히트맵 그래프 기능을 제공합니다. 이를 이용하면 GitHub의 Contribution Graph와 같은 그래프를 쉽게 만들 수 있습니다.</p>
+
+<ul>
+  <li><a href="https://frappe.io/charts/docs/basic/heatmapn" target="_blank">히트맵</a></li>
+</ul>
+
+<p><img src="/assets/post-images/frappe-charts/hitmap.png" alt="hitmap" /></p>
+
+<p><a href="https://lolog.me" target="_blank">LoLog.me</a> 사이트를 만들 때, 사각형을 하나하나 찍는 코드를 짜서 비슷한 기능을 구현했었습니다. 이 모듈을 일찍 알았더라면 더 쉽게 구현할 수 있었을 듯 합니다…</p>
+
+<h2 id="완성된-코드-github">완성된 코드 <a href="https://github.com/unionyy/practice/blob/main/graph-javascript/practice.html" target="_blank">GitHub</a></h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"kr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Chart!<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/frappe-charts@1.5.6/dist/frappe-charts.min.iife.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+        <span class="nt">&lt;style&gt;</span>
+            <span class="nc">.dataset-units</span> <span class="p">{</span>
+                <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="nt">&lt;/style&gt;</span>
+
+        <span class="nt">&lt;script&gt;</span>
+            <span class="kd">function</span> <span class="nx">Hide</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"chart"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        
+        <span class="nt">&lt;script&gt;</span>
+            <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="na">labels</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="dl">'</span><span class="s1">0min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">2min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">3min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">4min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">5min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">6min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">7min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">8min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">9min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">10min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">11min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">12min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">13min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">14min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">15min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">16min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">17min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">18min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">19min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">20min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">21min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">22min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">23min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">24min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">25min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">26min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">27min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">28min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">29min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">30min</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">31min</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">32min</span><span class="dl">'</span>
+                <span class="p">],</span>
+                <span class="na">datasets</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player 1</span><span class="dl">"</span><span class="p">,</span>
+                        <span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">564</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span>
+                            <span class="mi">340</span><span class="p">,</span> <span class="mi">671</span><span class="p">,</span> <span class="mi">549</span><span class="p">,</span> <span class="mi">868</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">410</span><span class="p">,</span>
+                            <span class="mi">701</span><span class="p">,</span> <span class="mi">971</span><span class="p">,</span> <span class="mi">231</span><span class="p">,</span> <span class="mi">646</span><span class="p">,</span> <span class="mi">811</span><span class="p">,</span> <span class="mi">1241</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span>
+                            <span class="mi">146</span><span class="p">,</span> <span class="mi">712</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">485</span><span class="p">,</span> <span class="mi">483</span><span class="p">,</span> <span class="mi">711</span><span class="p">,</span> <span class="mi">237</span><span class="p">,</span>
+                            <span class="mi">410</span><span class="p">,</span> <span class="mi">1089</span><span class="p">,</span> <span class="mi">1460</span><span class="p">,</span> <span class="mi">875</span><span class="p">,</span> <span class="mi">1171</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player 2</span><span class="dl">"</span><span class="p">,</span>
+                        <span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">194</span><span class="p">,</span> <span class="mi">548</span><span class="p">,</span> <span class="mi">748</span><span class="p">,</span> <span class="mi">1401</span><span class="p">,</span>
+                            <span class="mi">149</span><span class="p">,</span> <span class="mi">734</span><span class="p">,</span> <span class="mi">1231</span><span class="p">,</span> <span class="mi">214</span><span class="p">,</span> <span class="mi">336</span><span class="p">,</span> <span class="mi">949</span><span class="p">,</span>
+                            <span class="mi">1681</span><span class="p">,</span> <span class="mi">133</span><span class="p">,</span> <span class="mi">364</span><span class="p">,</span> <span class="mi">601</span><span class="p">,</span> <span class="mi">1136</span><span class="p">,</span> <span class="mi">253</span><span class="p">,</span>
+                            <span class="mi">590</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">514</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">559</span><span class="p">,</span> <span class="mi">376</span><span class="p">,</span>
+                            <span class="mi">1214</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">544</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">719</span><span class="p">,</span> <span class="mi">1249</span><span class="p">,</span>
+                            <span class="mi">1438</span><span class="p">,</span> <span class="mi">2007</span><span class="p">,</span> <span class="mi">276</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player 3</span><span class="dl">"</span><span class="p">,</span>
+                        <span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">395</span><span class="p">,</span> <span class="mi">753</span><span class="p">,</span> <span class="mi">1474</span><span class="p">,</span>
+                            <span class="mi">1845</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">544</span><span class="p">,</span> <span class="mi">865</span><span class="p">,</span> <span class="mi">344</span><span class="p">,</span>
+                            <span class="mi">394</span><span class="p">,</span> <span class="mi">735</span><span class="p">,</span> <span class="mi">1038</span><span class="p">,</span> <span class="mi">1432</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">458</span><span class="p">,</span>
+                            <span class="mi">1057</span><span class="p">,</span> <span class="mi">276</span><span class="p">,</span> <span class="mi">399</span><span class="p">,</span> <span class="mi">770</span><span class="p">,</span> <span class="mi">1313</span><span class="p">,</span> <span class="mi">490</span><span class="p">,</span>
+                            <span class="mi">904</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">543</span><span class="p">,</span> <span class="mi">257</span><span class="p">,</span> <span class="mi">797</span><span class="p">,</span>
+                            <span class="mi">954</span><span class="p">,</span> <span class="mi">1536</span><span class="p">,</span> <span class="mi">1992</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="kd">const</span> <span class="nx">chart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">frappe</span><span class="p">.</span><span class="nx">Chart</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chart</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>  <span class="c1">// or a DOM element,</span>
+                <span class="c1">// new Chart() in case of ES6 module with above usage</span>
+                <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Current Gold</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">data</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
+                <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// or 'bar', 'line', 'scatter', 'pie', 'percentage'</span>
+                <span class="na">height</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+                <span class="c1">//colors: ['#7cd6fd', '#743ee2']</span>
+                <span class="na">lineOptions</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">hideDots</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// default: 0</span>
+                    <span class="na">regionFill</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// default: 0</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="nt">&lt;/script&gt;</span>
+
+        <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"Hide('dataset-0')"</span><span class="nt">&gt;</span>Player 1<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"Hide('dataset-1')"</span><span class="nt">&gt;</span>Player 2<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"Hide('dataset-2')"</span><span class="nt">&gt;</span>Player 3<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://frappe.io/charts/docs" target="_blank">Frappe Charts - Docs</a></li>
+  <li><a href="/js/jquery-cdn/" target="_blank">jQuery 설치 없이 사용하기[CDN]</a></li>
+</ul>
+
+        
+        
+
+
+
+
+
+
+
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+    
+        
+        
+        
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        
+        
+        
+         
+    
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+
+<div>
+    <h3><a href="/categories#javascript">JavaScript</a> 카테고리의 다른 글</h3>
+    <div>
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/js/compress/" rel="permalink">👉 [JavaScript Compressor] 자바스크립트 코드 압축하기
+ <span class="date__text">2021-03-19</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/js/charts-donut/" rel="permalink">👉 JavaScript 도넛 차트 만들기[Google Charts]
+ <span class="date__text">2021-02-24</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="highlight__item date__item">
+  
+    <a href="/js/frappe-charts/" rel="permalink">👈 JavaScript 차트 만들기[Frappe Charts]
+ <span class="date__text">2021-02-19</span></a>
+  
+</div>
+
+            
+        
+            
+                
+
+<div class="list__item date__item">
+  
+    <a href="/js/jquery-cdn/" rel="permalink">👉 jQuery 설치 없이 사용하기[CDN]
+ <span class="date__text">2021-01-26</span></a>
+  
+</div>
+
+            
+        
+    </div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#frappe-charts" class="page__taxonomy-item" rel="tag">Frappe Charts</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#javascript" class="page__taxonomy-item" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#javascript" class="page__taxonomy-item" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-02-19T01:19:30+00:00">February 19, 2021</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/lol/production-key-approved/" class="pagination--pager" title="Riot API - Production API Key 승인!
+">이전</a>
+    
+    
+      <a href="/mysql/insert-multi/" class="pagination--pager" title="MySQL INSERT 한번에 하기 (성능 대폭 향상)
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://blog.uniony.me/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Blog</a></li>
+        
+      
+        
+          <li><a href="https://github.com/unionyy" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> unionyy</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/yoonyeony/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> yoonyeony</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 유년. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
