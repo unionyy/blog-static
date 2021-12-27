@@ -23,14 +23,14 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="유년시절">
 <meta property="og:title" content="[SWEA] 9468. 친구 추천 (C++, 라이브러리 X)">
-<meta property="og:url" content="https://blog.uniony.me/pages/unionyy/blog/swea/9468/">
+<meta property="og:url" content="https://blog.uniony.me/pages/unionyy/blog-static/swea/9468/">
 
 
   <meta property="og:description" content="B형 실전 문제  풀이  Graph와 Bucket을 이용했다.  Graph와 Linked List를 이용해서 Edge를 만들면 Edge를 Delete할 때 해당 node의 모든 edge를 탐색하야하므로 시간초과가 난다.  그렇다고해서 N * N의 edge 배열을 만들기엔 N이 10000으로 너무 커서 메모리가 부족하다.  대안으로 Bucket을 사용했다.  64크기의 Bucket으로 Linked List를 구현하면, delete할 때에는 최대 64개의 edge만 탐색하면 되고, 필요한 메모리 공간이 N * N / 64 로 크게 준다.  실수  최대 edge의 개수가 1,000,000개 인데, 100,000개로 오타가 났다.  MAX 상수의 값을 다시 한번 체크하자.">
 
 
 
-  <meta property="og:image" content="https://blog.uniony.me/pages/unionyy/blog/assets/images/teaser.png">
+  <meta property="og:image" content="https://blog.uniony.me/pages/unionyy/blog-static/assets/images/teaser.png">
 
 
 
@@ -43,7 +43,7 @@
 
 
 
-<link rel="canonical" href="https://blog.uniony.me/pages/unionyy/blog/swea/9468/">
+<link rel="canonical" href="https://blog.uniony.me/pages/unionyy/blog-static/swea/9468/">
 
 
 
@@ -54,7 +54,7 @@
     
       "@type": "Person",
       "name": "유년",
-      "url": "https://blog.uniony.me/pages/unionyy/blog/"
+      "url": "https://blog.uniony.me/pages/unionyy/blog-static/"
     
   }
 </script>
@@ -71,7 +71,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/pages/unionyy/blog/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+<link href="/pages/unionyy/blog-static/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +81,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/pages/unionyy/blog/assets/css/main.css">
+<link rel="stylesheet" href="/pages/unionyy/blog-static/assets/css/main.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
 
 <!--[if IE]>
@@ -144,16 +144,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/pages/unionyy/blog/">
+        <a class="site-title" href="/pages/unionyy/blog-static/">
           유년시절
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/pages/unionyy/blog/posts/">Posts</a>
+              <a href="/pages/unionyy/blog-static/posts/">Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/pages/unionyy/blog/categories/">Categories</a>
+              <a href="/pages/unionyy/blog-static/categories/">Categories</a>
             </li><li class="masthead__menu-item">
-              <a href="/pages/unionyy/blog/tags/">Tags</a>
+              <a href="/pages/unionyy/blog-static/tags/">Tags</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -190,7 +190,7 @@
   
     <div class="author__avatar">
       
-        <img src="/pages/unionyy/blog/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+        <img src="/pages/unionyy/blog-static/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
       
     </div>
   
@@ -487,7 +487,7 @@
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/11696/" rel="permalink">👉 [SWEA] 11696. 멀티유저 파일시스템 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/11696/" rel="permalink">👉 [SWEA] 11696. 멀티유저 파일시스템 (C++, 라이브러리 X)
  <span class="date__text">2021-08-24</span></a>
   
 </div>
@@ -499,7 +499,7 @@
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/11716/" rel="permalink">👉 [SWEA] 11716. 도서관 정리 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/11716/" rel="permalink">👉 [SWEA] 11716. 도서관 정리 (C++, 라이브러리 X)
  <span class="date__text">2021-08-24</span></a>
   
 </div>
@@ -511,7 +511,7 @@
 
 <div class="highlight__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/9468/" rel="permalink">👈 [SWEA] 9468. 친구 추천 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/9468/" rel="permalink">👈 [SWEA] 9468. 친구 추천 (C++, 라이브러리 X)
  <span class="date__text">2021-08-20</span></a>
   
 </div>
@@ -523,7 +523,7 @@
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/9467/" rel="permalink">👉 [SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/9467/" rel="permalink">👉 [SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
  <span class="date__text">2021-08-20</span></a>
   
 </div>
@@ -535,7 +535,7 @@
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/12526/" rel="permalink">👉 [SWEA] 12526. 자동완성 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/12526/" rel="permalink">👉 [SWEA] 12526. 자동완성 (C++, 라이브러리 X)
  <span class="date__text">2021-08-19</span></a>
   
 </div>
@@ -839,7 +839,7 @@ data-ad-slot="2789714322"></ins>
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/11696/" rel="permalink">👉 [SWEA] 11696. 멀티유저 파일시스템 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/11696/" rel="permalink">👉 [SWEA] 11696. 멀티유저 파일시스템 (C++, 라이브러리 X)
  <span class="date__text">2021-08-24</span></a>
   
 </div>
@@ -851,7 +851,7 @@ data-ad-slot="2789714322"></ins>
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/11716/" rel="permalink">👉 [SWEA] 11716. 도서관 정리 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/11716/" rel="permalink">👉 [SWEA] 11716. 도서관 정리 (C++, 라이브러리 X)
  <span class="date__text">2021-08-24</span></a>
   
 </div>
@@ -863,7 +863,7 @@ data-ad-slot="2789714322"></ins>
 
 <div class="highlight__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/9468/" rel="permalink">👈 [SWEA] 9468. 친구 추천 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/9468/" rel="permalink">👈 [SWEA] 9468. 친구 추천 (C++, 라이브러리 X)
  <span class="date__text">2021-08-20</span></a>
   
 </div>
@@ -875,7 +875,7 @@ data-ad-slot="2789714322"></ins>
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/9467/" rel="permalink">👉 [SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/9467/" rel="permalink">👉 [SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
  <span class="date__text">2021-08-20</span></a>
   
 </div>
@@ -887,7 +887,7 @@ data-ad-slot="2789714322"></ins>
 
 <div class="list__item date__item">
   
-    <a href="/pages/unionyy/blog/swea/12526/" rel="permalink">👉 [SWEA] 12526. 자동완성 (C++, 라이브러리 X)
+    <a href="/pages/unionyy/blog-static/swea/12526/" rel="permalink">👉 [SWEA] 12526. 자동완성 (C++, 라이브러리 X)
  <span class="date__text">2021-08-19</span></a>
   
 </div>
@@ -916,19 +916,19 @@ data-ad-slot="2789714322"></ins>
     
       
       
-      <a href="/pages/unionyy/blog/tags/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
+      <a href="/pages/unionyy/blog-static/tags/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
     
       
       
-      <a href="/pages/unionyy/blog/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+      <a href="/pages/unionyy/blog-static/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
     
       
       
-      <a href="/pages/unionyy/blog/tags/#graph" class="page__taxonomy-item" rel="tag">Graph</a><span class="sep">, </span>
+      <a href="/pages/unionyy/blog-static/tags/#graph" class="page__taxonomy-item" rel="tag">Graph</a><span class="sep">, </span>
     
       
       
-      <a href="/pages/unionyy/blog/tags/#swea" class="page__taxonomy-item" rel="tag">SWEA</a>
+      <a href="/pages/unionyy/blog-static/tags/#swea" class="page__taxonomy-item" rel="tag">SWEA</a>
     
     </span>
   </p>
@@ -949,7 +949,7 @@ data-ad-slot="2789714322"></ins>
     
       
       
-      <a href="/pages/unionyy/blog/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+      <a href="/pages/unionyy/blog-static/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
     
     </span>
   </p>
@@ -966,11 +966,11 @@ data-ad-slot="2789714322"></ins>
       
   <nav class="pagination">
     
-      <a href="/pages/unionyy/blog/swea/9467/" class="pagination--pager" title="[SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
+      <a href="/pages/unionyy/blog-static/swea/9467/" class="pagination--pager" title="[SWEA] 9467. 문자열 암호화 (C++, 라이브러리 X)
 ">이전</a>
     
     
-      <a href="/pages/unionyy/blog/swea/11716/" class="pagination--pager" title="[SWEA] 11716. 도서관 정리 (C++, 라이브러리 X)
+      <a href="/pages/unionyy/blog-static/swea/11716/" class="pagination--pager" title="[SWEA] 11716. 도서관 정리 (C++, 라이브러리 X)
 ">다음</a>
     
   </nav>
@@ -1035,7 +1035,7 @@ data-ad-slot="2789714322"></ins>
       
     
 
-    <li><a href="/pages/unionyy/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    <li><a href="/pages/unionyy/blog-static/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
   </ul>
 </div>
 
@@ -1045,14 +1045,14 @@ data-ad-slot="2789714322"></ins>
     </div>
 
     
-  <script src="/pages/unionyy/blog/assets/js/main.min.js"></script>
+  <script src="/pages/unionyy/blog-static/assets/js/main.min.js"></script>
 
 
 
 
-<script src="/pages/unionyy/blog/assets/js/lunr/lunr.min.js"></script>
-<script src="/pages/unionyy/blog/assets/js/lunr/lunr-store.js"></script>
-<script src="/pages/unionyy/blog/assets/js/lunr/lunr-en.js"></script>
+<script src="/pages/unionyy/blog-static/assets/js/lunr/lunr.min.js"></script>
+<script src="/pages/unionyy/blog-static/assets/js/lunr/lunr-store.js"></script>
+<script src="/pages/unionyy/blog-static/assets/js/lunr/lunr-en.js"></script>
 
 
 
@@ -1084,7 +1084,7 @@ data-ad-slot="2789714322"></ins>
 
     var script = document.createElement('script');
     script.setAttribute('src', 'https://utteranc.es/client.js');
-    script.setAttribute('repo', 'unionyy/blog');
+    script.setAttribute('repo', 'unionyy/blog-static');
     script.setAttribute('issue-term', 'pathname');
     script.setAttribute('theme', 'github-light');
     script.setAttribute('crossorigin', 'anonymous');
