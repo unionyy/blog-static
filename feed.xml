@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://unionyy.github.io/blog-static/feed.xml" rel="self" type="application/atom+xml" /><link href="https://unionyy.github.io/blog-static/" rel="alternate" type="text/html" /><updated>2021-12-19T12:15:08+00:00</updated><id>https://unionyy.github.io/blog-static/feed.xml</id><title type="html">유년시절</title><subtitle>유년이의 블로그. Uniony's blog</subtitle><author><name>유년</name></author><entry><title type="html">오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)</title><link href="https://unionyy.github.io/blog-static/life/bridge2/" rel="alternate" type="text/html" title="오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)" /><published>2021-11-16T15:50:30+00:00</published><updated>2021-11-16T15:50:30+00:00</updated><id>https://unionyy.github.io/blog-static/life/life-bridge2</id><content type="html" xml:base="https://unionyy.github.io/blog-static/life/bridge2/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://blog.uniony.me/pages/unionyy/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.uniony.me/pages/unionyy/blog/" rel="alternate" type="text/html" /><updated>2021-12-27T17:22:19+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/feed.xml</id><title type="html">유년시절</title><subtitle>유년이의 블로그. Uniony's blog</subtitle><author><name>유년</name></author><entry><title type="html">오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)</title><link href="https://blog.uniony.me/pages/unionyy/blog/life/bridge2/" rel="alternate" type="text/html" title="오징어 게임 징검다리 건너기 참가자별 성공 확률 2 (파이썬 테스트)" /><published>2021-11-17T00:50:30+09:00</published><updated>2021-11-17T00:50:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/life/life-bridge2</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/life/bridge2/">&lt;hr /&gt;
 
 &lt;p&gt;이전 글에서 수학적으로 계산했던 오징어 게임 징검다리 건너기 참가자별 성공 확률을 코드로 구현하여 테스트해보았습니다.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -45,6 +45,13 @@
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;게임을 100만번 진행하여 최초로 성공한 참가자를 축적하는 코드입니다.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;플랏&quot;&gt;플랏&lt;/h2&gt;
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
@@ -109,7 +116,7 @@
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://wikidocs.net/92071&quot; target=&quot;_blank&quot;&gt;01. Matplotlib 기본 사용&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유년</name></author><category term="Life" /><category term="Squid Game" /><category term="Python" /><summary type="html">이전 글에서 수학적으로 계산했던 오징어 게임 징검다리 건너기 참가자별 성공 확률을 코드로 구현하여 테스트해보았습니다.</summary></entry><entry><title type="html">오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)</title><link href="https://unionyy.github.io/blog-static/life/bridge/" rel="alternate" type="text/html" title="오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)" /><published>2021-11-14T06:34:30+00:00</published><updated>2021-11-14T06:34:30+00:00</updated><id>https://unionyy.github.io/blog-static/life/life-bridge</id><content type="html" xml:base="https://unionyy.github.io/blog-static/life/bridge/">&lt;hr /&gt;
+&lt;/ul&gt;</content><author><name>유년</name></author><category term="Life" /><category term="Squid Game" /><category term="Python" /><summary type="html">이전 글에서 수학적으로 계산했던 오징어 게임 징검다리 건너기 참가자별 성공 확률을 코드로 구현하여 테스트해보았습니다.</summary></entry><entry><title type="html">오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)</title><link href="https://blog.uniony.me/pages/unionyy/blog/life/bridge/" rel="alternate" type="text/html" title="오징어 게임 징검다리 건너기 참가자별 성공 확률 1 (계산)" /><published>2021-11-14T15:34:30+09:00</published><updated>2021-11-14T15:34:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/life/life-bridge</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/life/bridge/">&lt;hr /&gt;
 
 &lt;p&gt;넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다.&lt;/p&gt;
 
@@ -132,6 +139,13 @@
 &lt;p&gt;…&lt;/p&gt;
 
 &lt;p&gt;19번째 참가자가 성공할 경우의 수는 18C0 + 18C1 + … + 18C18 = 262,144 입니다. (전체 경우의 수와 같습니다!)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;확률&quot;&gt;확률&lt;/h2&gt;
 &lt;p&gt;위에서 구한 경우의 수를 바탕으로 각 참가자별 성공 확률을 계산해 보았습니다.&lt;/p&gt;
@@ -276,7 +290,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://bookdown.org/mathemedicine/Stat_book/normal-distribution.html&quot; target=&quot;_blank&quot;&gt;Chapter 3 정규분포(Normal distribution)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://secstart.tistory.com/970&quot; target=&quot;_blank&quot;&gt;엑셀 COMBIN 함수로 조합수 구하기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유년</name></author><category term="Life" /><category term="Squid Game" /><summary type="html">넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다. 변수가 없는 상황(유리 장인 X, 기억 못하는 경우 X)에서 각 참가자별로 성공할 확률이 얼마나 되는지 계산해보겠습니다.</summary></entry><entry><title type="html">삼성전자 SW 역량테스트 B형 후기 3 (두번째 테스트)</title><link href="https://unionyy.github.io/blog-static/study/samsungb3/" rel="alternate" type="text/html" title="삼성전자 SW 역량테스트 B형 후기 3 (두번째 테스트)" /><published>2021-11-05T08:15:30+00:00</published><updated>2021-11-05T08:15:30+00:00</updated><id>https://unionyy.github.io/blog-static/study/study-samsug3</id><content type="html" xml:base="https://unionyy.github.io/blog-static/study/samsungb3/">&lt;hr /&gt;
+&lt;/ul&gt;</content><author><name>유년</name></author><category term="Life" /><category term="Squid Game" /><summary type="html">넷플릭스 드라마 “오징어 게임” 의 5번째 게임은 “징검다리 건너기” 입니다. 18쌍의 강화유리와 일반유리로 이루어진 징검다리를 참가자 16명이 차례로 건너는 게임입니다. 변수가 없는 상황(유리 장인 X, 기억 못하는 경우 X)에서 각 참가자별로 성공할 확률이 얼마나 되는지 계산해보겠습니다.</summary></entry><entry><title type="html">삼성전자 SW 역량테스트 B형 후기 3 (두번째 테스트)</title><link href="https://blog.uniony.me/pages/unionyy/blog/study/samsungb3/" rel="alternate" type="text/html" title="삼성전자 SW 역량테스트 B형 후기 3 (두번째 테스트)" /><published>2021-11-05T17:15:30+09:00</published><updated>2021-11-05T17:15:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/study/study-samsug3</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/study/samsungb3/">&lt;hr /&gt;
 
 &lt;p&gt;이전 글에 이어지는 삼성전자 SW 알고리즘 역량테스트 B형 취득 후기입니다. 이번 글에서는 2번의 시험 중 두번째 시험을 치르면서 느낀 점을 정리해보았습니다.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -316,7 +330,7 @@
 &lt;p&gt;시험이 종료될 때까지 최적화를 진행하였고, 그 결과 4-5배 정도 빠른 실행시간을 얻을 수 있었습니다. 특수한 버그나 오류가 없으면 무난히 통과할 수 있을 만한 결과를 얻었습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;시험-결과&quot;&gt;시험 결과&lt;/h2&gt;
-&lt;p&gt;8월 27일에 치른 두번째 테스트에 통과하여 삼성전자 SW 알고리즘 역량 테스트 Level B(Pro) 를 취득하였습니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">이전 글에 이어지는 삼성전자 SW 알고리즘 역량테스트 B형 취득 후기입니다. 이번 글에서는 2번의 시험 중 두번째 시험을 치르면서 느낀 점을 정리해보았습니다.</summary></entry><entry><title type="html">삼성전자 SW 역량테스트 B형 후기 2 (첫번째 테스트)</title><link href="https://unionyy.github.io/blog-static/study/samsungb2/" rel="alternate" type="text/html" title="삼성전자 SW 역량테스트 B형 후기 2 (첫번째 테스트)" /><published>2021-10-29T06:25:30+00:00</published><updated>2021-10-29T06:25:30+00:00</updated><id>https://unionyy.github.io/blog-static/study/study-samsug2</id><content type="html" xml:base="https://unionyy.github.io/blog-static/study/samsungb2/">&lt;hr /&gt;
+&lt;p&gt;8월 27일에 치른 두번째 테스트에 통과하여 삼성전자 SW 알고리즘 역량 테스트 Level B(Pro) 를 취득하였습니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">이전 글에 이어지는 삼성전자 SW 알고리즘 역량테스트 B형 취득 후기입니다. 이번 글에서는 2번의 시험 중 두번째 시험을 치르면서 느낀 점을 정리해보았습니다.</summary></entry><entry><title type="html">삼성전자 SW 역량테스트 B형 후기 2 (첫번째 테스트)</title><link href="https://blog.uniony.me/pages/unionyy/blog/study/samsungb2/" rel="alternate" type="text/html" title="삼성전자 SW 역량테스트 B형 후기 2 (첫번째 테스트)" /><published>2021-10-29T15:25:30+09:00</published><updated>2021-10-29T15:25:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/study/study-samsug2</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/study/samsungb2/">&lt;hr /&gt;
 
 &lt;p&gt;이전 글에 이어지는 삼성전자 SW 알고리즘 역량테스트 B형 취득 후기입니다. 이번 글에서는 2번의 시험 중 첫번째 시험을 치르면서 느낀 점을 정리해보았습니다.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -329,6 +343,13 @@
 &lt;p&gt;인터넷 접속은 불가능하고 VDI에 설치된 IDE (Visual Studio, Pycharm, Eclipse) 만을 이용할 수 있습니다. 대면시험과 동일한 환경에 화상 감독으로만 변경되었다고 생각하시면 됩니다.&lt;/p&gt;
 
 &lt;p&gt;앞으로 테스트가 어떤 형태로 진행될 지는 모르겠지만 비대면 시험도 괜찮다고 느꼈습니다. 본인이 익숙한 장소에서 익숙한 장비(모니터, 키보드) 로 시험을 치를 수 있고, 직접 왔다갔다하는 번거로움이 없어서 좋았습니다!&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;8월-21일-첫시험&quot;&gt;8월 21일 첫시험&lt;/h2&gt;
 &lt;p&gt;첫 시험은 사실 별로 긴장을 하지 않고 봤습니다. 실전문제 몇문제를 풀어본 상태였고 한번의 기회가 더 있었기에 가벼운 마음으로 임했습니다. 심지어 필기할 펜과 종이도 준비하지 않았습니다. (메모장 앱을 사용하였습니다.)&lt;/p&gt;
@@ -350,6 +371,13 @@
 &lt;p&gt;그러나 코드의 큰 틀을 바꾸기엔 이미 시간이 너무 지나버렸고, 결국 그대로 제출할 수밖에 없었습니다.&lt;/p&gt;
 
 &lt;p&gt;운이 정말 좋지 않는 이상 통과할 수 없을 것이라고 생각했고, 역시나 이번 테스트에서는 통과하지 못했습니다.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;느낀점&quot;&gt;느낀점&lt;/h2&gt;
 &lt;p&gt;첫 시험을 치르면서 느낀점이 많았습니다.&lt;/p&gt;
@@ -378,7 +406,7 @@
 &lt;h2 id=&quot;8월-27일-두번째-시험&quot;&gt;8월 27일 두번째 시험&lt;/h2&gt;
 &lt;p&gt;첫번째 시험에서 많은 것을 느끼고 두번째 시험은 제대로 준비하고 제대로 치렀습니다.&lt;/p&gt;
 
-&lt;p&gt;이에 대한 내용은 다음 글로 남기겠습니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">이전 글에 이어지는 삼성전자 SW 알고리즘 역량테스트 B형 취득 후기입니다. 이번 글에서는 2번의 시험 중 첫번째 시험을 치르면서 느낀 점을 정리해보았습니다.</summary></entry><entry><title type="html">[Match-V5] 게임 타입(큐 타입) 알아내기 (Riot API)</title><link href="https://unionyy.github.io/blog-static/lol/queue-id/" rel="alternate" type="text/html" title="[Match-V5] 게임 타입(큐 타입) 알아내기 (Riot API)" /><published>2021-10-27T11:52:30+00:00</published><updated>2021-10-27T11:52:30+00:00</updated><id>https://unionyy.github.io/blog-static/lol/lol-queueid</id><content type="html" xml:base="https://unionyy.github.io/blog-static/lol/queue-id/">&lt;hr /&gt;
+&lt;p&gt;이에 대한 내용은 다음 글로 남기겠습니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">이전 글에 이어지는 삼성전자 SW 알고리즘 역량테스트 B형 취득 후기입니다. 이번 글에서는 2번의 시험 중 첫번째 시험을 치르면서 느낀 점을 정리해보았습니다.</summary></entry><entry><title type="html">[Match-V5] 게임 타입(큐 타입) 알아내기 (Riot API)</title><link href="https://blog.uniony.me/pages/unionyy/blog/lol/queue-id/" rel="alternate" type="text/html" title="[Match-V5] 게임 타입(큐 타입) 알아내기 (Riot API)" /><published>2021-10-27T20:52:30+09:00</published><updated>2021-10-27T20:52:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/lol/lol-queueid</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/lol/queue-id/">&lt;hr /&gt;
 
 &lt;p&gt;Match-V5 에서 큐 타입 (솔랭, 자랭, 일반 등) 은 info 오브젝트의 queueId 필드에 나와있습니다.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -437,7 +465,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.riotgames.com/docs/lol&quot; target=&quot;_blank&quot;&gt;LoL Documents&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://lolog.me&quot; target=&quot;_blank&quot;&gt;LoLog.me&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유년</name></author><category term="LoL" /><category term="Riot API" /><category term="League of Legend" /><summary type="html">Match-V5 에서 큐 타입 (솔랭, 자랭, 일반 등) 은 info 오브젝트의 queueId 필드에 나와있습니다.</summary></entry><entry><title type="html">삼성전자 SW 역량테스트 B형 후기 1 (준비)</title><link href="https://unionyy.github.io/blog-static/study/samsungb/" rel="alternate" type="text/html" title="삼성전자 SW 역량테스트 B형 후기 1 (준비)" /><published>2021-10-25T07:05:30+00:00</published><updated>2021-10-25T07:05:30+00:00</updated><id>https://unionyy.github.io/blog-static/study/study-samsung-b</id><content type="html" xml:base="https://unionyy.github.io/blog-static/study/samsungb/">&lt;hr /&gt;
+&lt;/ul&gt;</content><author><name>유년</name></author><category term="LoL" /><category term="Riot API" /><category term="League of Legend" /><summary type="html">Match-V5 에서 큐 타입 (솔랭, 자랭, 일반 등) 은 info 오브젝트의 queueId 필드에 나와있습니다.</summary></entry><entry><title type="html">삼성전자 SW 역량테스트 B형 후기 1 (준비)</title><link href="https://blog.uniony.me/pages/unionyy/blog/study/samsungb/" rel="alternate" type="text/html" title="삼성전자 SW 역량테스트 B형 후기 1 (준비)" /><published>2021-10-25T16:05:30+09:00</published><updated>2021-10-25T16:05:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/study/study-samsung-b</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/study/samsungb/">&lt;hr /&gt;
 
 &lt;p&gt;삼성전자 S/W 알고리즘 특강을 수강하여 운좋게 삼성전자 SW 알고리즘 역량테스트 B형(pro) 을 치를 기회를 얻었습니다. 2회의 기회가 주어졌고 저는 두번째 테스트에서 통과하여 B형을 취득하였습니다.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -467,6 +495,13 @@
 
 &lt;p&gt;여러가지 자료구조나 알고리즘에 대한 이해, 그리고 원하는 대로 변형시키고 능숙하게 구현할 수 있는 능력이 필요합니다.&lt;/p&gt;
 
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;stl-사용&quot;&gt;STL 사용&lt;/h2&gt;
 &lt;p&gt;이제 B형 테스트에서도 A형 테스트와 마찬가지로 STL을 사용해도 된다고 합니다. 그러나 저는 STL을 사용하지 않았습니다.&lt;/p&gt;
 
@@ -494,6 +529,13 @@
 
 &lt;p&gt;알고리즘 공부를 하면서 자료구조와 알고리즘의 특징이나 시간복잡도에 대한 생각을 많이 하고 잘 이해해야합니다. 위의 키워드들을 다 이해하고 구현할 수 있을 정도면 충분합니다.&lt;/p&gt;
 
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;문제-풀이-연습&quot;&gt;문제 풀이 연습&lt;/h2&gt;
 
 &lt;p&gt;알고리즘 공부가 잘 됐다면 관건은 문제를 보고 알맞은 알고리즘 &amp;amp; 자료구조를 떠올리고 변형 및 적용하는 것입니다. 여러 문제들을 풀어보고 다른 사람의 풀이를 보면서 생각의 흐름을 익히는 것이 중요합니다.&lt;/p&gt;
@@ -520,7 +562,7 @@
 &lt;p&gt;B형 테스트는 main 함수는 수정할 수 없고 solution 함수만 구현하면 됩니다. 그러나 디버깅을 하면서 main 함수를 수정하여 로그를 찍는 등의 과정이 필요하므로 문제를 풀면서 main함수를 수정해보는 연습도 해보면 도움이 됩니다.&lt;/p&gt;
 
 &lt;h3 id=&quot;최적화&quot;&gt;최적화&lt;/h3&gt;
-&lt;p&gt;디버깅까지 마쳤을 때 시간이 남는다면 최적화를 해줍니다. 중복된 연산, 불필요한 연산 등을 찾아 최적화해줍니다. 시간이 얼마남지 않았다면 시간초과가 나지 않는 이상 무리하게 최적화 작업을 하는 것은 추천하지 않습니다. 마지막에 급하게 제출하면 예상치못한 버그가 발생할 수 있기 때문입니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">삼성전자 S/W 알고리즘 특강을 수강하여 운좋게 삼성전자 SW 알고리즘 역량테스트 B형(pro) 을 치를 기회를 얻었습니다. 2회의 기회가 주어졌고 저는 두번째 테스트에서 통과하여 B형을 취득하였습니다.</summary></entry><entry><title type="html">삼성전자 2021 하계 대학생 S/W 알고리즘 역량강화 특강 수료 후기</title><link href="https://unionyy.github.io/blog-static/study/algorithm2021/" rel="alternate" type="text/html" title="삼성전자 2021 하계 대학생 S/W 알고리즘 역량강화 특강 수료 후기" /><published>2021-10-12T03:05:30+00:00</published><updated>2021-10-12T03:05:30+00:00</updated><id>https://unionyy.github.io/blog-static/study/study-samsung-algo-lecture</id><content type="html" xml:base="https://unionyy.github.io/blog-static/study/algorithm2021/">&lt;hr /&gt;
+&lt;p&gt;디버깅까지 마쳤을 때 시간이 남는다면 최적화를 해줍니다. 중복된 연산, 불필요한 연산 등을 찾아 최적화해줍니다. 시간이 얼마남지 않았다면 시간초과가 나지 않는 이상 무리하게 최적화 작업을 하는 것은 추천하지 않습니다. 마지막에 급하게 제출하면 예상치못한 버그가 발생할 수 있기 때문입니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">삼성전자 S/W 알고리즘 특강을 수강하여 운좋게 삼성전자 SW 알고리즘 역량테스트 B형(pro) 을 치를 기회를 얻었습니다. 2회의 기회가 주어졌고 저는 두번째 테스트에서 통과하여 B형을 취득하였습니다.</summary></entry><entry><title type="html">삼성전자 2021 하계 대학생 S/W 알고리즘 역량강화 특강 수료 후기</title><link href="https://blog.uniony.me/pages/unionyy/blog/study/algorithm2021/" rel="alternate" type="text/html" title="삼성전자 2021 하계 대학생 S/W 알고리즘 역량강화 특강 수료 후기" /><published>2021-10-12T12:05:30+09:00</published><updated>2021-10-12T12:05:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/study/study-samsung-algo-lecture</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/study/algorithm2021/">&lt;hr /&gt;
 
 &lt;p&gt;2021.07.19 ~ 2021.08.27 6주간 삼성전자 하계 알고리즘 역량강화 특강에 참여하고 수료하였습니다. 이 과정은 삼성전자 SW 역량테스트 B형(Pro) 를 취득하는 것을 목표로 구성된 프로그램입니다. 교육 기간이 종료된 이후에 SW 역량테스트 B형에 응시할 수 있는 기회가 제공됩니다.&lt;/p&gt;
 
@@ -538,6 +580,13 @@
 &lt;h2 id=&quot;오리엔테이션--강사-초빙-강연&quot;&gt;오리엔테이션 &amp;amp; 강사 초빙 강연&lt;/h2&gt;
 
 &lt;p&gt;특강 첫날에는 실시간 온라인 오리엔테이션이 진행되었습니다. 특강 과정에 대한 설명을 들었고, 후반부에는 강사 초빙 강연이 진행되었습니다. 강사님은 알고리즘 교수님(정리해둔 자료를 잃어버려서 성함을 잊어버렸습니다 ㅠ)이었고 알고리즘을 공부해야하는 이유를 재밌게 설명해주셨습니다. 정말 재밌고 유익한 강의여서 알고리즘 공부를 시작하기 전에 의지를 다지는데 큰 도움이 되었습니다.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;기초-학습-4주&quot;&gt;기초 학습 (4주)&lt;/h2&gt;
 
@@ -560,6 +609,13 @@
 &lt;h2 id=&quot;채용-간담회&quot;&gt;채용 간담회&lt;/h2&gt;
 
 &lt;p&gt;특강 막바지에 실시간 온라인 강의로 채용 간담회가 진행되었습니다. 삼성전자 CE/IM 부문에 대한 안내와 채용 관련 설명을 해주셨습니다.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;sw-역량테스트-b형-2회&quot;&gt;SW 역량테스트 B형 (2회)&lt;/h2&gt;
 
@@ -594,7 +650,7 @@
 
 &lt;p&gt;특강을 수강하면서 학교 강의에서 배웠던 알고리즘들을 다시 한번 체계적으로 정리하는 기회를 가지게 되었습니다. 또한 B형 역량테스트를 통과하기 위한 여러가지 기법들을 배우고 STL을 사용하지 않고 알고리즘을 구현하는 능력을 키울 수 있었습니다.&lt;/p&gt;
 
-&lt;p&gt;SW 역량테스트를 치를 수 있는 기회를 얻어 B형을 취득하고 특강을 수료하여 갤럭시 워치까지 선물로 받아서 얻은 것도 많고 배운 것도 많은 알차고 만족스러운 특강이었습니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">2021.07.19 ~ 2021.08.27 6주간 삼성전자 하계 알고리즘 역량강화 특강에 참여하고 수료하였습니다. 이 과정은 삼성전자 SW 역량테스트 B형(Pro) 를 취득하는 것을 목표로 구성된 프로그램입니다. 교육 기간이 종료된 이후에 SW 역량테스트 B형에 응시할 수 있는 기회가 제공됩니다.</summary></entry><entry><title type="html">[C++ STL] 순열과 조합 (next_permutation)</title><link href="https://unionyy.github.io/blog-static/cpp/next_permutation/" rel="alternate" type="text/html" title="[C++ STL] 순열과 조합 (next_permutation)" /><published>2021-10-10T15:05:30+00:00</published><updated>2021-10-10T15:05:30+00:00</updated><id>https://unionyy.github.io/blog-static/cpp/cpp-next_permutation</id><content type="html" xml:base="https://unionyy.github.io/blog-static/cpp/next_permutation/">&lt;hr /&gt;
+&lt;p&gt;SW 역량테스트를 치를 수 있는 기회를 얻어 B형을 취득하고 특강을 수료하여 갤럭시 워치까지 선물로 받아서 얻은 것도 많고 배운 것도 많은 알차고 만족스러운 특강이었습니다.&lt;/p&gt;</content><author><name>유년</name></author><category term="Study" /><category term="Review" /><category term="Algorithm" /><category term="Samsung" /><summary type="html">2021.07.19 ~ 2021.08.27 6주간 삼성전자 하계 알고리즘 역량강화 특강에 참여하고 수료하였습니다. 이 과정은 삼성전자 SW 역량테스트 B형(Pro) 를 취득하는 것을 목표로 구성된 프로그램입니다. 교육 기간이 종료된 이후에 SW 역량테스트 B형에 응시할 수 있는 기회가 제공됩니다.</summary></entry><entry><title type="html">[C++ STL] 순열과 조합 (next_permutation)</title><link href="https://blog.uniony.me/pages/unionyy/blog/cpp/next_permutation/" rel="alternate" type="text/html" title="[C++ STL] 순열과 조합 (next_permutation)" /><published>2021-10-11T00:05:30+09:00</published><updated>2021-10-11T00:05:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/cpp/cpp-next_permutation</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/cpp/next_permutation/">&lt;hr /&gt;
 
 &lt;p&gt;코딩테스트를 보는 도중에 순열을 만들어야하는 상황이 있었습니다. 시간은 15분이 남아있었고, &lt;strong&gt;next_permutation&lt;/strong&gt; 함수 사용법이 정확히 기억나지 않았습니다. (어느 라이브러리에 있는지 생각이 나지 않았습니다 ㅠ)&lt;/p&gt;
 
@@ -636,6 +692,13 @@
 &lt;span class=&quot;cm&quot;&gt;/* aba    */&lt;/span&gt;
 &lt;span class=&quot;cm&quot;&gt;/* baa    */&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;next_permutation-함수-살펴보기&quot;&gt;next_permutation 함수 살펴보기&lt;/h2&gt;
 
@@ -725,7 +788,7 @@
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://en.cppreference.com/w/cpp/algorithm/next_permutation&quot; target=&quot;_blank&quot;&gt;std::next_permutation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유년</name></author><category term="C++" /><category term="C++" /><category term="STL" /><summary type="html">next_permutation 함수는 위와 같이 사용하고 파라미터로 보내진 Iterator 범위 내의 원소들을 다음 경우의 수 배열로 만들어 줍니다. 이 때, 오름차순에서 내림차순으로 가는 경우의 수를 고려합니다. 즉, 오름차순으로 정렬된 배열에 next_permutation 을 계속 사용하면 모든 경우의 수를 거쳐 결국 내림차순으로 정렬됩니다.</summary></entry><entry><title type="html">[Match-V5 업데이트] gameDuration 변경 및 gameEndTimestamp 추가 (Riot API)</title><link href="https://unionyy.github.io/blog-static/lol/game-duration/" rel="alternate" type="text/html" title="[Match-V5 업데이트] gameDuration 변경 및 gameEndTimestamp 추가 (Riot API)" /><published>2021-10-08T15:04:30+00:00</published><updated>2021-10-08T15:04:30+00:00</updated><id>https://unionyy.github.io/blog-static/lol/lol-gameEndTimestamp</id><content type="html" xml:base="https://unionyy.github.io/blog-static/lol/game-duration/">&lt;hr /&gt;
+&lt;/ul&gt;</content><author><name>유년</name></author><category term="C++" /><category term="C++" /><category term="STL" /><summary type="html">next_permutation 함수는 위와 같이 사용하고 파라미터로 보내진 Iterator 범위 내의 원소들을 다음 경우의 수 배열로 만들어 줍니다. 이 때, 오름차순에서 내림차순으로 가는 경우의 수를 고려합니다. 즉, 오름차순으로 정렬된 배열에 next_permutation 을 계속 사용하면 모든 경우의 수를 거쳐 결국 내림차순으로 정렬됩니다.</summary></entry><entry><title type="html">[Match-V5 업데이트] gameDuration 변경 및 gameEndTimestamp 추가 (Riot API)</title><link href="https://blog.uniony.me/pages/unionyy/blog/lol/game-duration/" rel="alternate" type="text/html" title="[Match-V5 업데이트] gameDuration 변경 및 gameEndTimestamp 추가 (Riot API)" /><published>2021-10-09T00:04:30+09:00</published><updated>2021-10-09T00:04:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/lol/lol-gameEndTimestamp</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/lol/game-duration/">&lt;hr /&gt;
 
 &lt;p&gt;Match-V4 에서 Match-V5 로 넘어가면서 gameDuration(게임 길이) 값이 초단위에서 밀리초단위로 변경되었습니다.&lt;/p&gt;
 
@@ -747,6 +810,13 @@
 &lt;p&gt;&lt;strong&gt;gameEndTimestamp - gameStartTimestamp&lt;/strong&gt;: 
 gameEndTimestamp 는 라이엇 서버에서 게임이 종료되었다고 판단되는 시간입니다. gameStartTimestamp 는 게임이 시작된 시간 입니다. (밀리초 단위의 값입니다)&lt;/p&gt;
 
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;이전-방식으로-돌아간-이유&quot;&gt;이전 방식으로 돌아간 이유&lt;/h2&gt;
 &lt;p&gt;1번 방식은 결국 마지막 유저가 게임에서 나간 시간이 gameDuration이 됩니다. 2번 방식의 경우에도 사실상 마지막 유저가 게임에서 나간 시간이 게임이 종료된 시간이니 같은 값의 gameDuration을 갖게 될 것입니다.&lt;/p&gt;
 
@@ -767,7 +837,7 @@ gameEndTimestamp 는 라이엇 서버에서 게임이 종료되었다고 판단�
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.riotgames.com/apis#match-v5/GET_getMatch&quot; target=&quot;_blank&quot;&gt;MATCH-V5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유년</name></author><category term="LoL" /><category term="Riot API" /><category term="League of Legend" /><summary type="html">Match-V4 에서 Match-V5 로 넘어가면서 gameDuration(게임 길이) 값이 초단위에서 밀리초단위로 변경되었습니다. 그러나 11.20 패치 이후로 다시 초단위로 돌아가게 되었고 gameEndTimestamp 라는 필드가 새로 생겨났습니다.</summary></entry><entry><title type="html">[LoLog.me] Match-V5 업데이트</title><link href="https://unionyy.github.io/blog-static/lol/lolog-matchv5/" rel="alternate" type="text/html" title="[LoLog.me] Match-V5 업데이트" /><published>2021-10-05T02:13:30+00:00</published><updated>2021-10-05T02:13:30+00:00</updated><id>https://unionyy.github.io/blog-static/lol/lolog-matchv5</id><content type="html" xml:base="https://unionyy.github.io/blog-static/lol/lolog-matchv5/">&lt;hr /&gt;
+&lt;/ul&gt;</content><author><name>유년</name></author><category term="LoL" /><category term="Riot API" /><category term="League of Legend" /><summary type="html">Match-V4 에서 Match-V5 로 넘어가면서 gameDuration(게임 길이) 값이 초단위에서 밀리초단위로 변경되었습니다. 그러나 11.20 패치 이후로 다시 초단위로 돌아가게 되었고 gameEndTimestamp 라는 필드가 새로 생겨났습니다.</summary></entry><entry><title type="html">[LoLog.me] Match-V5 업데이트</title><link href="https://blog.uniony.me/pages/unionyy/blog/lol/lolog-matchv5/" rel="alternate" type="text/html" title="[LoLog.me] Match-V5 업데이트" /><published>2021-10-05T11:13:30+09:00</published><updated>2021-10-05T11:13:30+09:00</updated><id>https://blog.uniony.me/pages/unionyy/blog/lol/lolog-matchv5</id><content type="html" xml:base="https://blog.uniony.me/pages/unionyy/blog/lol/lolog-matchv5/">&lt;hr /&gt;
 
 &lt;p&gt;Riot API 의 Match-V4 지원이 종료되었습니다. 그래서 &lt;a href=&quot;https://lolog.me/&quot; target=&quot;_blank&quot;&gt;LoLog.me&lt;/a&gt; 서버를 Match-V5 에 맞게 업데이트했습니다.&lt;/p&gt;
 
@@ -792,6 +862,13 @@ gameEndTimestamp 는 라이엇 서버에서 게임이 종료되었다고 판단�
 &lt;img src=&quot;/assets/post-images/lolog-matchv5/graph.png&quot; alt=&quot;graph&quot; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
 &lt;p&gt;전적 그래프로 게임을 얼마나 했는지 한눈에 확인하는 전적 그래프 기능은 &lt;a href=&quot;https://lolog.me/&quot; target=&quot;_blank&quot;&gt;LoLog.me&lt;/a&gt; 의 근본 기능이었습니다.&lt;/p&gt;
 
 &lt;p&gt;전적 그래프로부터 모든 기능이 파생됐고, 웹사이트의 이름이 LoLog.me (롤 로그 미) 인 이유 또한 전적 그래프 때문이었습니다.&lt;/p&gt;
@@ -801,6 +878,13 @@ gameEndTimestamp 는 라이엇 서버에서 게임이 종료되었다고 판단�
 &lt;p&gt;이말은 전적 그래프 기능을 계속해서 제공하기 위해서는 Riot API 를 예전보다 100배 더 호출해야 한다는 뜻이고, 이는 Rate Limit 과 반응속도 등의 이유로 불가능한 일입니다.&lt;/p&gt;
 
 &lt;p&gt;그래서 아쉽지만 전적 그래프 제공을 중단하기로 했고 &lt;a href=&quot;https://lolog.me/&quot; target=&quot;_blank&quot;&gt;LoLog.me&lt;/a&gt; 에서 전적 그래프를 제거하였습니다.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:block; text-align:center;&quot; data-ad-layout=&quot;in-article&quot; data-ad-format=&quot;fluid&quot; data-ad-client=&quot;ca-pub-6916694174053190&quot; data-ad-slot=&quot;2789714322&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;바뀐-웹사이트&quot;&gt;바뀐 웹사이트&lt;/h2&gt;
 

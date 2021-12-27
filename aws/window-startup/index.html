@@ -23,27 +23,27 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="유년시절">
 <meta property="og:title" content="[AWS EC2 Windows] 재부팅 후 PM2 자동 실행 (사용자 데이터 스크립트)">
-<meta property="og:url" content="https://unionyy.github.io/blog-static/aws/window-startup/">
+<meta property="og:url" content="https://blog.uniony.me/pages/unionyy/blog/aws/window-startup/">
 
 
   <meta property="og:description" content="리눅스의 경우 pm2 save와 pm2 startup 명령어를 사용해 재부팅시 pm2가 자동 실행되도록 할 수 있습니다.  그러나 pm2 startup 명령어는 아직 Unix 계열 운영체제에서만 작동합니다.  대신 윈도우 서버에서는 AWS EC2의 사용자 데이터 스크립트 기능을 사용하면 됩니다.">
 
 
 
-  <meta property="og:image" content="https://unionyy.github.io/blog-static/assets/images/teaser.png">
+  <meta property="og:image" content="https://blog.uniony.me/pages/unionyy/blog/assets/images/teaser.png">
 
 
 
 
 
-  <meta property="article:published_time" content="2021-09-20T03:40:30+00:00">
+  <meta property="article:published_time" content="2021-09-20T12:40:30+09:00">
 
 
 
 
 
 
-<link rel="canonical" href="https://unionyy.github.io/blog-static/aws/window-startup/">
+<link rel="canonical" href="https://blog.uniony.me/pages/unionyy/blog/aws/window-startup/">
 
 
 
@@ -54,7 +54,7 @@
     
       "@type": "Person",
       "name": "유년",
-      "url": "https://unionyy.github.io/blog-static/"
+      "url": "https://blog.uniony.me/pages/unionyy/blog/"
     
   }
 </script>
@@ -71,7 +71,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
+<link href="/pages/unionyy/blog/feed.xml" type="application/atom+xml" rel="alternate" title="유년시절 Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +81,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/pages/unionyy/blog/assets/css/main.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
 
 <!--[if IE]>
@@ -104,6 +104,11 @@
     <!-- start custom head snippets -->
 
 <!-- Google Adsense Code -->
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190"
+     crossorigin="anonymous"></script>
+
 
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
@@ -139,16 +144,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">
+        <a class="site-title" href="/pages/unionyy/blog/">
           유년시절
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/posts/">Posts</a>
+              <a href="/pages/unionyy/blog/posts/">Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/categories/">Categories</a>
+              <a href="/pages/unionyy/blog/categories/">Categories</a>
             </li><li class="masthead__menu-item">
-              <a href="/tags/">Tags</a>
+              <a href="/pages/unionyy/blog/tags/">Tags</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -185,7 +190,7 @@
   
     <div class="author__avatar">
       
-        <img src="/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
+        <img src="/pages/unionyy/blog/assets/images/bio-photo.jpg" alt="유년" itemprop="image">
       
     </div>
   
@@ -298,7 +303,7 @@
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[AWS EC2 Windows] 재부팅 후 PM2 자동 실행 (사용자 데이터 스크립트)">
     <meta itemprop="description" content="리눅스의 경우 pm2 save와 pm2 startup 명령어를 사용해 재부팅시 pm2가 자동 실행되도록 할 수 있습니다.그러나 pm2 startup 명령어는 아직 Unix 계열 운영체제에서만 작동합니다.대신 윈도우 서버에서는 AWS EC2의 사용자 데이터 스크립트 기능을 사용하면 됩니다.">
-    <meta itemprop="datePublished" content="2021-09-20T03:40:30+00:00">
+    <meta itemprop="datePublished" content="2021-09-20T12:40:30+09:00">
     
 
     <div class="page__inner-wrap">
@@ -313,7 +318,7 @@
       
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        <time datetime="2021-09-20T03:40:30+00:00">September 20, 2021</time>
+        <time datetime="2021-09-20T12:40:30+09:00">September 20, 2021</time>
       </span>
     
 
@@ -331,9 +336,41 @@
         
           <aside class="sidebar__right side__ad sticky">
             
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190"
+     crossorigin="anonymous"></script>
+<!-- 사이드광고 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6916694174053190"
+     data-ad-slot="4498683131"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
           </aside>
         
         
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190"
+     crossorigin="anonymous"></script>
+<!-- 상단 디스플레이 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6916694174053190"
+     data-ad-slot="1027449209"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
         
 
 
@@ -537,7 +574,7 @@
 
 <div class="highlight__item date__item">
   
-    <a href="/aws/window-startup/" rel="permalink">👈 [AWS EC2 Windows] 재부팅 후 PM2 자동 실행 (사용자 데이터 스크립트)
+    <a href="/pages/unionyy/blog/aws/window-startup/" rel="permalink">👈 [AWS EC2 Windows] 재부팅 후 PM2 자동 실행 (사용자 데이터 스크립트)
  <span class="date__text">2021-09-20</span></a>
   
 </div>
@@ -549,7 +586,7 @@
 
 <div class="list__item date__item">
   
-    <a href="/aws/ec2-alert/" rel="permalink">👉 AWS EC2 서버 터짐… (서버 재부팅, 경보 설정)
+    <a href="/pages/unionyy/blog/aws/ec2-alert/" rel="permalink">👉 AWS EC2 서버 터짐… (서버 재부팅, 경보 설정)
  <span class="date__text">2021-02-21</span></a>
   
 </div>
@@ -561,7 +598,7 @@
 
 <div class="list__item date__item">
   
-    <a href="/aws/ec2-connect/" rel="permalink">👉 터미널로 AWS EC2 Linux 인스턴스 연결하기
+    <a href="/pages/unionyy/blog/aws/ec2-connect/" rel="permalink">👉 터미널로 AWS EC2 Linux 인스턴스 연결하기
  <span class="date__text">2021-01-24</span></a>
   
 </div>
@@ -624,6 +661,13 @@ pm2 start parrot-bot.js --time
 &lt;persist&gt;true&lt;/persist&gt;
 </code></pre></div></div>
 
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190" crossorigin="anonymous"></script>
+
+<p><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-6916694174053190" data-ad-slot="2789714322"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
 <h2 id="ec2launch-script-실행">EC2Launch script 실행</h2>
 
 <p><img src="/assets/post-images/window-startup/ec2-launch-setting.png" alt="User Data Script" /></p>
@@ -654,6 +698,20 @@ pm2 start parrot-bot.js --time
 </ul>
 
         
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6916694174053190"
+crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+style="display:block; text-align:center;"
+data-ad-layout="in-article"
+data-ad-format="fluid"
+data-ad-client="ca-pub-6916694174053190"
+data-ad-slot="2789714322"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
         
 
 
@@ -857,7 +915,7 @@ pm2 start parrot-bot.js --time
 
 <div class="highlight__item date__item">
   
-    <a href="/aws/window-startup/" rel="permalink">👈 [AWS EC2 Windows] 재부팅 후 PM2 자동 실행 (사용자 데이터 스크립트)
+    <a href="/pages/unionyy/blog/aws/window-startup/" rel="permalink">👈 [AWS EC2 Windows] 재부팅 후 PM2 자동 실행 (사용자 데이터 스크립트)
  <span class="date__text">2021-09-20</span></a>
   
 </div>
@@ -869,7 +927,7 @@ pm2 start parrot-bot.js --time
 
 <div class="list__item date__item">
   
-    <a href="/aws/ec2-alert/" rel="permalink">👉 AWS EC2 서버 터짐… (서버 재부팅, 경보 설정)
+    <a href="/pages/unionyy/blog/aws/ec2-alert/" rel="permalink">👉 AWS EC2 서버 터짐… (서버 재부팅, 경보 설정)
  <span class="date__text">2021-02-21</span></a>
   
 </div>
@@ -881,7 +939,7 @@ pm2 start parrot-bot.js --time
 
 <div class="list__item date__item">
   
-    <a href="/aws/ec2-connect/" rel="permalink">👉 터미널로 AWS EC2 Linux 인스턴스 연결하기
+    <a href="/pages/unionyy/blog/aws/ec2-connect/" rel="permalink">👉 터미널로 AWS EC2 Linux 인스턴스 연결하기
  <span class="date__text">2021-01-24</span></a>
   
 </div>
@@ -910,15 +968,15 @@ pm2 start parrot-bot.js --time
     
       
       
-      <a href="/tags/#aws" class="page__taxonomy-item" rel="tag">AWS</a><span class="sep">, </span>
+      <a href="/pages/unionyy/blog/tags/#aws" class="page__taxonomy-item" rel="tag">AWS</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#ec2" class="page__taxonomy-item" rel="tag">EC2</a><span class="sep">, </span>
+      <a href="/pages/unionyy/blog/tags/#ec2" class="page__taxonomy-item" rel="tag">EC2</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#pm2" class="page__taxonomy-item" rel="tag">PM2</a>
+      <a href="/pages/unionyy/blog/tags/#pm2" class="page__taxonomy-item" rel="tag">PM2</a>
     
     </span>
   </p>
@@ -939,14 +997,14 @@ pm2 start parrot-bot.js --time
     
       
       
-      <a href="/categories/#aws" class="page__taxonomy-item" rel="tag">AWS</a>
+      <a href="/pages/unionyy/blog/categories/#aws" class="page__taxonomy-item" rel="tag">AWS</a>
     
     </span>
   </p>
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-09-20T03:40:30+00:00">September 20, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-09-20T12:40:30+09:00">September 20, 2021</time></p>
 
 
       </footer>
@@ -956,16 +1014,25 @@ pm2 start parrot-bot.js --time
       
   <nav class="pagination">
     
-      <a href="/swea/12532/" class="pagination--pager" title="[SWEA] 12532. 인플레이션 (C++, 라이브러리 X)
+      <a href="/pages/unionyy/blog/swea/12532/" class="pagination--pager" title="[SWEA] 12532. 인플레이션 (C++, 라이브러리 X)
 ">이전</a>
     
     
-      <a href="/blog/category/" class="pagination--pager" title="[Jekyll, GitHub Page] ‘이 카테고리의 다른 글’ 만들기
+      <a href="/pages/unionyy/blog/blog/category/" class="pagination--pager" title="[Jekyll, GitHub Page] ‘이 카테고리의 다른 글’ 만들기
 ">다음</a>
     
   </nav>
 
     </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">댓글남기기</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
 
     
   </article>
@@ -1016,7 +1083,7 @@ pm2 start parrot-bot.js --time
       
     
 
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    <li><a href="/pages/unionyy/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
   </ul>
 </div>
 
@@ -1026,14 +1093,29 @@ pm2 start parrot-bot.js --time
     </div>
 
     
-  <script src="/assets/js/main.min.js"></script>
+  <script src="/pages/unionyy/blog/assets/js/main.min.js"></script>
 
 
 
 
-<script src="/assets/js/lunr/lunr.min.js"></script>
-<script src="/assets/js/lunr/lunr-store.js"></script>
-<script src="/assets/js/lunr/lunr-en.js"></script>
+<script src="/pages/unionyy/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/pages/unionyy/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/pages/unionyy/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7KXC9MZLZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7KXC9MZLZF', { 'anonymize_ip': false});
+</script>
+
+
 
 
 
@@ -1050,7 +1132,7 @@ pm2 start parrot-bot.js --time
 
     var script = document.createElement('script');
     script.setAttribute('src', 'https://utteranc.es/client.js');
-    script.setAttribute('repo', 'unionyy/blog-static');
+    script.setAttribute('repo', 'unionyy/blog');
     script.setAttribute('issue-term', 'pathname');
     script.setAttribute('theme', 'github-light');
     script.setAttribute('crossorigin', 'anonymous');
